@@ -1,0 +1,29 @@
+[{
+  "comments": [
+    {
+      "_id": "5b5e3168c603b6424e631c8a",
+      "postedAt": "2017-01-01T00:00:00.000Z",
+      "body": "Message content here..",
+      "likes": [
+        "5b5e3168c603b6424e631c8a",
+        "5b5e3168c603b6424e631c8a"
+      ],
+      "author": {
+        "_id": "5b5e3168c603b6424e631c8a",
+        "name": "Jane Doe",
+        "image": "s3-bucket"
+      }
+    }
+  ]
+},
+{
+  "users": [
+    {
+      "_id": "5b5e3168c603b6424e631c8a",
+      "email": "email@email.com",
+      "username": "username",
+      "name": "Jane Doe",
+      "image": "s3-bucket"
+    }
+  ]
+}]
