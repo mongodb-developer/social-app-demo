@@ -35,8 +35,6 @@ export default function Home() {
       });
   }, []);
 
-  console.log(comments);
-
   return (
     <AppShell
       header={<HeaderSearch />}
