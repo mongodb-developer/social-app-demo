@@ -28,7 +28,7 @@ export default function Home() {
   const [comments, setComments] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/comment")
+    fetch("/api/comment")
       .then((response) => response.json())
       .then((data) => {
         setComments(data);
