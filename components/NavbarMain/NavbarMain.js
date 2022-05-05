@@ -98,9 +98,6 @@ const NavbarMain = () => {
   return (
     <Navbar width={{ xs: 200, sm: 300 }} p="md" className={classes.navbar}>
       <Navbar.Section grow>
-        <Group className={classes.header} position="apart">
-          <Logo width={240} />
-        </Group>
         {links}
       </Navbar.Section>
 

@@ -1,8 +1,15 @@
-import React from 'react';
-import { createStyles, Header, Autocomplete, Group, Burger } from '@mantine/core';
-import { useBooleanToggle } from '@mantine/hooks';
-import { Search } from 'tabler-icons-react';
-import { ColorToggle } from '../ColorToggle/ColorToggle';
+import React from "react";
+import {
+  createStyles,
+  Header,
+  Autocomplete,
+  Group,
+  Burger,
+} from "@mantine/core";
+import { useBooleanToggle } from "@mantine/hooks";
+import { Search } from "tabler-icons-react";
+import { ColorToggle } from "../ColorToggle/ColorToggle";
+import { Logo } from "./Logo";
 
 const useStyles = createStyles((theme) => ({
   header: {
@@ -12,35 +19,42 @@ const useStyles = createStyles((theme) => ({
 
   inner: {
     height: 56,
-    display: 'flex',
-    justifyContent: 'end',
-    alignItems: 'center',
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    paddingLeft: "0.5rem",
   },
 
   links: {
-    [theme.fn.smallerThan('md')]: {
-      display: 'none',
+    [theme.fn.smallerThan("md")]: {
+      display: "none",
     },
   },
 
   search: {
-    [theme.fn.smallerThan('xs')]: {
-      display: 'none',
+    [theme.fn.smallerThan("xs")]: {
+      display: "none",
     },
   },
 
   link: {
-    display: 'block',
+    display: "block",
     lineHeight: 1,
-    padding: '8px 12px',
+    padding: "8px 12px",
     borderRadius: theme.radius.sm,
-    textDecoration: 'none',
-    color: theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.colors.gray[7],
+    textDecoration: "none",
+    color:
+      theme.colorScheme === "dark"
+        ? theme.colors.dark[0]
+        : theme.colors.gray[7],
     fontSize: theme.fontSizes.sm,
     fontWeight: 500,
 
-    '&:hover': {
-      backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0],
+    "&:hover": {
+      backgroundColor:
+        theme.colorScheme === "dark"
+          ? theme.colors.dark[6]
+          : theme.colors.gray[0],
     },
   },
 }));
@@ -68,6 +82,7 @@ export function HeaderSearch({ links }) {
           <MantineLogo />
         </Group> */}
 
+        <Logo width={240} />
         <Group>
           {/* <Group ml={50} spacing={5} className={classes.links}>
             {items}
@@ -76,7 +91,15 @@ export function HeaderSearch({ links }) {
             className={classes.search}
             placeholder="Search"
             icon={<Search size={16} />}
-            data={['React', 'Angular', 'Vue', 'Next.js', 'Riot.js', 'Svelte', 'Blitz.js']}
+            data={[
+              "React",
+              "Angular",
+              "Vue",
+              "Next.js",
+              "Riot.js",
+              "Svelte",
+              "Blitz.js",
+            ]}
           />
           <ColorToggle />
         </Group>
