@@ -15,6 +15,8 @@ import {
 import { useForm } from "@mantine/form";
 import { Edit, Trash, Heart, Share, BrandTwitter } from "tabler-icons-react";
 
+const tweetUrl = "https://twitter.com/intent/tweet?url=https%3A%2F%2Fsocial-mongodb-demo.vercel.app%2F&text=Check%20out%20this%20cool%20social%20media%20Jamstack%20app%20I%20made%20using%20the%20@MongoDB%20Data%20API%2C%20@Vercel%20serverless%20functions%2C%20@GitHub%2C%20and%20@Auth0%20for%20user%20authentication%21%21%21";
+
 const useStyles = createStyles((theme) => ({
   flutter: {
     padding: `${theme.spacing.lg}px ${theme.spacing.xl}px`,
@@ -216,7 +218,9 @@ const Flutter = ({ flutter, setFlutters }) => {
                         <BrandTwitter size={16} color={theme.colors.blue[4]} />
                       }
                       component="a"
-                      href="#"
+                      href={tweetUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
                     >
                       Twitter
                     </Menu.Item>

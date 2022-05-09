@@ -10,6 +10,7 @@ import { Logo } from "./Logo";
 
 const useStyles = createStyles((theme) => ({
   header: {
+    position: "sticky",
     paddingLeft: theme.spacing.md,
     paddingRight: theme.spacing.md,
   },

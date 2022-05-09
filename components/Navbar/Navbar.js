@@ -15,6 +15,7 @@ const useStyles = createStyles((theme, _params, getRef) => {
   const icon = getRef('icon');
   return {
     navbar: {
+      position: 'sticky',
       backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.white,
     },
 

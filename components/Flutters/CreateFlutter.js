@@ -55,6 +55,7 @@ const CreateFlutter = ({ setFlutters }) => {
         ...flutter
       },
     ]);
+    // notify flutter created
     form.reset();
   };
 
