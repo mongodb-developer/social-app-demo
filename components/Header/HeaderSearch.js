@@ -1,14 +1,11 @@
-import React from "react";
 import {
   createStyles,
   Header,
   Autocomplete,
   Group,
-  Burger,
 } from "@mantine/core";
-import { useBooleanToggle } from "@mantine/hooks";
+import ColorToggle from "../ColorToggle/ColorToggle";
 import { Search } from "tabler-icons-react";
-import { ColorToggle } from "../ColorToggle/ColorToggle";
 import { Logo } from "./Logo";
 
 const useStyles = createStyles((theme) => ({
@@ -59,34 +56,14 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-export function HeaderSearch({ links }) {
-  // const [opened, toggleOpened] = useBooleanToggle(false);
+const HeaderSearch = ({ links }) => {
   const { classes } = useStyles();
-
-  // const items = links.map((link) => (
-  //   <a
-  //     key={link.label}
-  //     href={link.link}
-  //     className={classes.link}
-  //     onClick={(event) => event.preventDefault()}
-  //   >
-  //     {link.label}
-  //   </a>
-  // ));
 
   return (
     <Header height={56} className={classes.header}>
       <div className={classes.inner}>
-        {/* <Group>
-          <Burger opened={opened} onClick={() => toggleOpened()} size="sm" />
-          <MantineLogo />
-        </Group> */}
-
         <Logo width={240} />
         <Group>
-          {/* <Group ml={50} spacing={5} className={classes.links}>
-            {items}
-          </Group> */}
           <Autocomplete
             className={classes.search}
             placeholder="Search"
@@ -107,3 +84,5 @@ export function HeaderSearch({ links }) {
     </Header>
   );
 }
+
+export default HeaderSearch;

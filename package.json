@@ -1,5 +1,5 @@
 {
-  "name": "social-leaf",
+  "name": "social-butterfly",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@auth0/nextjs-auth0": "^1.8.0",
     "@mantine/core": "^4.2.2",
     "@mantine/form": "^4.2.2",
     "@mantine/hooks": "^4.2.2",

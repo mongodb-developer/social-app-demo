@@ -8,10 +8,11 @@
         "5b5e3168c603b6424e631c8a",
         "5b5e3168c603b6424e631c8a"
       ],
-      "author": {
-        "_id": "5b5e3168c603b6424e631c8a",
+      "user": {
+        "id": "Realm user.id",
         "name": "Jane Doe",
-        "image": "s3-bucket"
+        "nickname": "jane.doe",
+        "picture": "url to image"
       }
     }
   ]
@@ -20,10 +21,14 @@
   "users": [
     {
       "_id": "5b5e3168c603b6424e631c8a",
+      "id": "Realm user.id",
       "email": "email@email.com",
-      "username": "username",
+      "nickname": "nickname",
       "name": "Jane Doe",
-      "image": "s3-bucket"
+      "picture": "url to image",
+      "data": {
+        "sub": "Auth0 unique identifier"
+      }
     }
   ]
 }]

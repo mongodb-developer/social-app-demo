@@ -1,11 +1,12 @@
+import { useUser } from "../../context/UserContext";
 import { createStyles, Avatar, Group, Textarea, Button } from "@mantine/core";
 import { useForm } from "@mantine/form";
 
 const useStyles = createStyles((theme) => ({
-  comment: {
+  flutter: {
     padding: `${theme.spacing.lg}px ${theme.spacing.xl}px`,
   },
-  createComment: {
+  createFlutter: {
     justifyContent: "center",
   },
   media: {
@@ -16,36 +17,42 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-const CreateComment = ({ author, setComments }) => {
+const CreateFlutter = ({ setFlutters }) => {
+  const user = useUser();
   const { classes } = useStyles();
   const form = useForm({
     initialValues: {
-      comment: "",
+      flutter: "",
     },
   });
 
-  const onSubmitComment = async (value) => {
-    const comment = {
+  const onSubmitFlutter = async (value) => {
+    const flutter = {
       postedAt: Date.now(),
-      body: value.comment,
+      body: value.flutter,
       likes: [],
-      author,
+      user: {
+        id: user.id,
+        name: user.name,
+        nickname: user.nickname,
+        picture: user.picture,
+      },
     };
-    const response = await fetch("/api/comment", {
+    const response = await fetch("/api/flutter", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(comment),
+      body: JSON.stringify(flutter),
     });
 
     const responseJson = await response.json();
     
-    setComments((comments) => [
-      ...comments,
+    setFlutters((flutters) => [
+      ...flutters,
       {
         _id: responseJson.insertedId,
-        ...comment
+        ...flutter
       },
     ]);
     form.reset();
@@ -53,21 +60,21 @@ const CreateComment = ({ author, setComments }) => {
 
   return (
     <Group position={"center"} mt={10} mb={20}>
-      <Avatar src={author.image} alt={author.name} radius="xl" />
-      <form onSubmit={form.onSubmit((value) => onSubmitComment(value))}>
+      <Avatar src={user.picture} alt={user.name} radius="xl" />
+      <form onSubmit={form.onSubmit((value) => onSubmitFlutter(value))}>
         <Group>
           <Textarea
             required
-            placeholder="What's on your mind?"
+            placeholder="Send a flutter..."
             variant="filled"
             className={classes.media}
-            {...form.getInputProps("comment")}
+            {...form.getInputProps("flutter")}
           />
-          <Button type="submit">Submit</Button>
+          <Button type="submit">Send</Button>
         </Group>
       </form>
     </Group>
   );
 };
 
-export default CreateComment;
+export default CreateFlutter;
