@@ -1,4 +1,4 @@
-# Lesson 2
+# Lesson 3
 
 <- Back to [previous lesson]()
 
@@ -6,40 +6,35 @@
 
 ## Goal
 
-The goal of this lesson is to create a MongoDB Atals Cluter and enable the Atlas Data API.
+The goal of this lesson is to load a sample data set into your MongoDB database.
 
-## Task 1: Sign up for a MongoDB Atlas Account
- 
-Sign up for a [MongoDB Atlas account](https://mongodb.com/atlas/register2) if you don't already have one.
+## Task 1: Load Sample Data
 
-## Task 2: Create a MongoDB Atlas Cluster
+Use either the MongoDB VS Code extension or MongoDB Compass to load sample data into your cluster.
 
-Create a free shared MongoDB Atlas Cluster.
+### Option 1: MongoDB VS Code Extension
 
-## Task 3: Enable the Atlas Data API
+Install the [MongoDB VS Code extension](https://marketplace.visualstudio.com/items?itemName=mongodb.mongodb-vscode) if you haven't already.
 
-1. From the Atlas dashboard, select **Data API** from the left menu.
-1. Enable the Data API for your cluster.
+1. Go to the MongoDB tab in the activity bar.
+1. Add a MongoDB connetion using your connection string. Be sure to update the username and password.
+1. Right click your cluster and choose "Add Database...".
+1. Name the database `social_butterfly` and the collection `flutters`.
+1. Add a line after the collection is created to insert the sample data using the [`data.json`](data.json) file.
+  ```js
+  db.flutters.insertMany(...paste data.json here...)
+  ```
+1. Run the file by clicking the play button at the top right.
+1. You should see the sample data in the collection after refreshing the cluster on the MongoDB tab.
 
-## Task 4: Create a Data API Key
+### Option 2: MongoDB Compass
 
-1. From the **Data API** page, select the **Create API key** button at the top right.
-1. Name your key anything you want, then select the **Generate API Key** button.
-1. Copy the API key and save it somewhere (you will not be able to see it again)
+Install [MongoDB Compass](https://www.mongodb.com/try/download/compass) if you don't have it already.
 
-## Task 5: Enable network and user access
-
-1. Select **Database Access** from the left menu.
-  - Add a new user. Save the user name and password for later.
-1. Select **Network Access** from the left menu
-  - Add an IP address to the access list. (Either your IP address or allow access from anywhere).
-
-## Task 6: Get your database connection string
-
-1. Select **Database** from the left menu.
-1. Select the **Connect** button on your cluster.
-1. Choose "Connect using MongoDB Compass".
-1. Copy the connection string and save it for later.
+1. Use your connection string to connect to your database. Be sure to update the username and password.
+1. Create a new database called `social_butterfly` with a collection named `flutters`.
+1. Navigate to the collection and select the **Import Data** button. Use the file browser to select the [`data.json`](data.json) file in this branch. Choose **JSON** as the file type and click **Import**.
+1. You should now see the sample data in the collection.
 
 ---
 
