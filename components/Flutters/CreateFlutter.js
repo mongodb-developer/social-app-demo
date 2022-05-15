@@ -1,13 +1,6 @@
+import { useUser } from "../../context/UserContext";
 import { createStyles, Avatar, Group, Textarea, Button } from "@mantine/core";
 import { useForm } from "@mantine/form";
-
-const demoUser = {
-  id: "6276d0c602ce122f7b8b11ec",
-  name: "Jesse Hall",
-  nickname: "codestackr",
-  picture:
-    "https://lh3.googleusercontent.com/a-/AOh14GgPdA54bhnYcSngbZxMuSLe-khjk-BaaKWsvmxD=s96-c",
-};
 
 const useStyles = createStyles((theme) => ({
   flutter: {
@@ -25,7 +18,7 @@ const useStyles = createStyles((theme) => ({
 }));
 
 const CreateFlutter = ({ setFlutters }) => {
-  const user = demoUser;
+  const user = useUser();
   const { classes } = useStyles();
   const form = useForm({
     initialValues: {
@@ -54,13 +47,13 @@ const CreateFlutter = ({ setFlutters }) => {
     });
 
     const responseJson = await response.json();
-
+    
     setFlutters((flutters) => [
+      ...flutters,
       {
         _id: responseJson.insertedId,
-        ...flutter,
+        ...flutter
       },
-      ...flutters,
     ]);
     form.reset();
   };

@@ -1,3 +1,4 @@
+import { useUser } from "../../context/UserContext";
 import {
   UnstyledButton,
   Group,
@@ -24,16 +25,8 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-const demoUser = {
-  id: "6276d0c602ce122f7b8b11ec",
-  name: "Jesse Hall",
-  nickname: "codestackr",
-  picture:
-    "https://lh3.googleusercontent.com/a-/AOh14GgPdA54bhnYcSngbZxMuSLe-khjk-BaaKWsvmxD=s96-c",
-};
-
 const UserButton = () => {
-  const user = demoUser;
+  const user = useUser();
   const { classes, theme } = useStyles();
   const menuIconColor =
     theme.colors[theme.primaryColor][theme.colorScheme === "dark" ? 5 : 6];
@@ -68,6 +61,7 @@ const UserButton = () => {
       <Menu.Item
         icon={<Logout size={16} color={menuIconColor} />}
         component="a"
+        href="/api/auth/logout"
       >
         Logout
       </Menu.Item>

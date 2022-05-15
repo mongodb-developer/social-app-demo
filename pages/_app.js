@@ -1,5 +1,7 @@
 import { useState } from "react";
 import Head from "next/head";
+import { UserProvider } from "@auth0/nextjs-auth0";
+import { UserProvider as AtlasUserProvider } from "../context/UserContext";
 import { MantineProvider, ColorSchemeProvider } from "@mantine/core";
 
 export default function App(props) {
@@ -17,36 +19,40 @@ export default function App(props) {
           content="minimum-scale=1, initial-scale=1, width=device-width"
         />
       </Head>
-      <ColorSchemeProvider
-        colorScheme={colorScheme}
-        toggleColorScheme={toggleColorScheme}
-      >
-        <MantineProvider
-          withGlobalStyles
-          withNormalizeCSS
-          theme={{
-            colors: {
-              brand: [
-                "#00684A", // hightlight light
-                "#fff",
-                "#fff",
-                "#fff",
-                "#fff",
-                "#00ED64", // icon color dark
-                "#00684A", // btn-primary light
-                "#00ED64", // btn-hover light
-                "#00684A", // btn-primary dark
-                "#023430", // btn-hover, highlight dark
-              ],
-              // #00ED64, #00684A, #023430
-            },
-            primaryColor: "brand",
-            colorScheme,
-          }}
-        >
-          <Component {...pageProps} />
-        </MantineProvider>
-      </ColorSchemeProvider>
+      <UserProvider>
+        <AtlasUserProvider>
+          <ColorSchemeProvider
+            colorScheme={colorScheme}
+            toggleColorScheme={toggleColorScheme}
+          >
+            <MantineProvider
+              withGlobalStyles
+              withNormalizeCSS
+              theme={{
+                colors: {
+                  brand: [
+                    "#00684A", // hightlight light
+                    "#fff",
+                    "#fff",
+                    "#fff",
+                    "#fff",
+                    "#00ED64", // icon color dark
+                    "#00684A", // btn-primary light
+                    "#00ED64", // btn-hover light
+                    "#00684A", // btn-primary dark
+                    "#023430", // btn-hover, highlight dark
+                  ],
+                  // #00ED64, #00684A, #023430
+                },
+                primaryColor: "brand",
+                colorScheme,
+              }}
+            >
+              <Component {...pageProps} />
+            </MantineProvider>
+          </ColorSchemeProvider>
+        </AtlasUserProvider>
+      </UserProvider>
     </>
   );
 }

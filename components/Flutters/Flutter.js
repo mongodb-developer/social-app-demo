@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useUser } from "../../context/UserContext";
 import {
   createStyles,
   Text,
@@ -11,11 +12,10 @@ import {
   Textarea,
   Button,
 } from "@mantine/core";
-import { Edit, Trash, Heart, Share, BrandTwitter } from "tabler-icons-react";
 import { useForm } from "@mantine/form";
+import { Edit, Trash, Heart, Share, BrandTwitter } from "tabler-icons-react";
 
-const tweetUrl =
-  "https://twitter.com/intent/tweet?url=https%3A%2F%2Fsocial-mongodb-demo.vercel.app%2F&text=Check%20out%20this%20cool%20social%20media%20Jamstack%20app%20I%20made%20using%20the%20@MongoDB%20Data%20API%2C%20@Vercel%20serverless%20functions%2C%20@GitHub%2C%20and%20@Auth0%20for%20user%20authentication%21%21%21";
+const tweetUrl = "https://twitter.com/intent/tweet?url=https%3A%2F%2Fsocial-mongodb-demo.vercel.app%2F&text=Check%20out%20this%20cool%20social%20media%20Jamstack%20app%20I%20made%20using%20the%20@MongoDB%20Data%20API%2C%20@Vercel%20serverless%20functions%2C%20@GitHub%2C%20and%20@Auth0%20for%20user%20authentication%21%21%21";
 
 const useStyles = createStyles((theme) => ({
   flutter: {
@@ -49,13 +49,14 @@ const useStyles = createStyles((theme) => ({
 
 const Flutter = ({ flutter, setFlutters }) => {
   const { _id, postedAt, body, user: flutterUser } = flutter;
+  const user = useUser();
   const [modalOpened, setModalOpened] = useState(false);
   const [deleted, setDeleted] = useState(false);
   const { classes, theme } = useStyles();
 
   const form = useForm({
     initialValues: {
-      editFlutter: "",
+      editFlutter: "test",
     },
   });
 
@@ -108,8 +109,8 @@ const Flutter = ({ flutter, setFlutters }) => {
       }),
     });
     const responseJson = await response.json();
-    console.log(responseJson); 
     setDeleted(true);
+    console.log(responseJson);
   };
 
   return (
@@ -162,10 +163,11 @@ const Flutter = ({ flutter, setFlutters }) => {
                   0 people liked this
                 </Text>
                 <Group spacing={0}>
-                  <ActionIcon
-                    size="lg"
-                  >
-                    <Heart size={18} color={theme.colors.red[6]} />
+                  <ActionIcon size="lg">
+                    <Heart
+                      size={18}
+                      color={theme.colors.red[6]}
+                    />
                   </ActionIcon>
                   <Menu
                     control={
@@ -190,30 +192,34 @@ const Flutter = ({ flutter, setFlutters }) => {
                       Twitter
                     </Menu.Item>
                   </Menu>
-                  <ActionIcon
-                    onClick={() => editFlutter()}
-                    size="lg"
-                    sx={(theme) => ({
-                      color:
-                        theme.colorScheme === "dark"
-                          ? theme.colors.green[4]
-                          : theme.colors.green[6],
-                    })}
-                  >
-                    <Edit size={18} />
-                  </ActionIcon>
-                  <ActionIcon
-                    onClick={() => deleteFlutter()}
-                    size="lg"
-                    sx={(theme) => ({
-                      color:
-                        theme.colorScheme === "dark"
-                          ? theme.colors.red[4]
-                          : theme.colors.red[6],
-                    })}
-                  >
-                    <Trash size={18} />
-                  </ActionIcon>
+                  {user.id === flutterUser.id && (
+                    <>
+                      <ActionIcon
+                        onClick={() => editFlutter()}
+                        size="lg"
+                        sx={(theme) => ({
+                          color:
+                            theme.colorScheme === "dark"
+                              ? theme.colors.green[4]
+                              : theme.colors.green[6],
+                        })}
+                      >
+                        <Edit size={18} />
+                      </ActionIcon>
+                      <ActionIcon
+                        onClick={() => deleteFlutter()}
+                        size="lg"
+                        sx={(theme) => ({
+                          color:
+                            theme.colorScheme === "dark"
+                              ? theme.colors.red[4]
+                              : theme.colors.red[6],
+                        })}
+                      >
+                        <Trash size={18} />
+                      </ActionIcon>
+                    </>
+                  )}
                 </Group>
               </Group>
             </Card.Section>
@@ -222,6 +228,6 @@ const Flutter = ({ flutter, setFlutters }) => {
       )}
     </>
   );
-};
+}
 
 export default Flutter;

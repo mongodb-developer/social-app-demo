@@ -1,243 +1,102 @@
-# Lesson 5
+# Exercise 6
 
-<- Back to [previous lesson]()
+<- Back to [previous exercise]()
 
 ---
 
 ## Goal
 
-The goal of this lesson is to get your local application up and running. You should have basic CRUD functionality working by the end of this lesson.
+The goal of this lesson is to set up user authentication to limit access to endpoints and limit users ability to modify certain data. 
 
-## Task 1: Install dependencies
+## Task 1: Set up Auth0 application
 
-To install the dependencies for this lesson, run the following command in the terminal from the root of the project:
+Sign up for an [Auth0 account](https://auth0.com/signup?place=header&type=button&text=sign%20up), if you don't already have one.
+
+From the Auth0 dashboard, create a new application.
+1. Select **Applications** under **Applications** from the left menu.
+1. Click **Create Application**.
+1. Name your application anything and select **Regular Web Applications**.
+1. Click **Create**.
+1. From the **Settings** tab, note the **Domain**, **Client ID**, and **Client Secret**. (You will need these later.)
+1. Add to **Allowed Callback URLs**: `http://localhost:3000/api/callback`
+1. Add to **Allowed Logout URLs**: `http://localhost:3000`
+
+From the Auth0 dashboard, select **APIs** under **Applications** from the left menu.
+1. Click **Create API**
+1. Name it anything and set the identifier as your Data API ID.
+
+## Task 2: Set up Atlas authentication settings
+From the Atlas dashboard:
+1. Select **Database** from the left menu. 
+1. Select the **Linked Realm App** named "data".
+1. From **Authentication**, edit **Custom JWT Authentication**.
+1. Enable Provider.
+1. Set **Verification Method** to: Use a JWK URI
+1. Set **JWK URI**: `https://<account>.us.auth0.com/.well-known/jwks.json`
+  - Replace `<account>` with the beginning of your Auth0 domain.
+1. Click **Save**
+1. Enable "Create User" on the `Find` Data API endpoint
+  - This is currently not enabled in production. We may have to manually create users for testing during the dry run.
+
+## Task 3: Set rules for the `flutters` collection
+
+From the Atlas Data API Realm App:
+1. Select **Rules** from the left menu.
+1. Select the `flutters` collection.
+1. Choose the template: Users can read all data, but only write their own data.
+1. Set the **Field Name For User ID** to `user.id`.
+1. Click **Configure Collection**.
+1. Click **Save**.
+
+## Task 4: Add environment variables
+
+We need to add environment variables in order to connect to Auth0.
+1. Because we are in a different branch, rename the `.env.local.example` file to `.env.local`, add the following lines:
+  ```env
+  AUTH0_SECRET='use [openssl rand -hex 32] to generate a 32 bytes value'
+  AUTH0_BASE_URL='http://localhost:3000'
+  AUTH0_ISSUER_BASE_URL='https://<account>.us.auth0.com'
+  AUTH0_CLIENT_ID='<client_id>'
+  AUTH0_CLIENT_SECRET='<client_secret>'
+  AUTH0_AUDIENCE=<data_api_id>
+  AUTH0_SCOPE=openid email profile
+  ```
+  - Replace all placeholders with your Auth0 information.
+  - For `AUTH0_SECRET`, run: `openssl rand -hex 32` in your terminal to generate a 32 bytes value. Place this as the value for `AUTH0_SECRET`.
+
+## Overview of changes to the code base
+
+1. `pages/api/auth/[...auth0].js`
+  - This file handles all of the authentication routes for the Auth0 API. (login, logout, etc.)
+1. `pages/api/flutter/index.js`
+  - We are now using Auth0 to protect this endpoint, and we are getting the user's access token to pass to the Data API.
+  - Instead of `api-key`, we are now using the `jwtTokenString` for authentication to the Data API.
+1. `pages/api/user/index.js`
+  - We have a new `user` route that gets and updates the user's data.
+
+## Task 5: Install dependencies and test
+
+Because we are in a new branch, we will need to install the dependencies for this branch. Then we can start the application.
 
 ```bash
 npm install
-```
-
-## Task 2: Add local environment variable
-
-In order to connect using the Atlas Data API, we must provide a `MONGODB_DATA_API_KEY` environment variable with our API key.
-
-You will find a [`.env.local.example`](.env.local.example) file in the root of the project. Rename this file to `.env.local` and add your API key to the `MONGODB_DATA_API_KEY` variable.
-
-## Serverless functions
-
-Next.js has a native api route for handling serverless functions. Within `pages/api/flutter` you will find an [`index.js`](./pages/api/flutter/index.js) file. This file will contain all of the basic CRUD routes for our application to connect to our Atlas Data API.
-
-## Task 3: Define the standard fetch variables that will be used for all requests.
-
-> You can reference the [Atlas Data API docs](https://www.mongodb.com/docs/atlas/api/data-api-resources) for more information.
-
-In the `fetchOptions` variable, you will need to define the `method` and `headers` properties. The method should be set to `POST` and the headers should include a `Content-Type`, `Access-Control-Request-Headers`, and `api-key`.
-
-In the `fetchBody` variable, you will need to define the `dataSource`, which is your Cluster name, the `database` name, and the `collection` name.
-
-In the `baseUrl` variable, replace the `<Data API App ID>` with your Data API App ID. You can find this on the **Data API** page in your Atlas dashboard.
-
-<details>
-<summary>Show solution</summary>
-
-```js
-const fetchOptions = {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-    "Access-Control-Request-Headers": "*",
-    "api-key": process.env.MONGODB_DATA_API_KEY,
-  },
-};
-const fetchBody = {
-  dataSource: "Cluster0",
-  database: "social_butterfly",
-  collection: "flutters",
-};
-const baseUrl =
-  "https://data.mongodb-api.com/app/<Data API App ID>/endpoint/data/beta/action";
-```
-
-</details>
-<br>
-
-## Task 4: Create the `find` endpoint
-
-Create within the `switch` statement a `GET` request case.
-
-Within the `GET` case, you should use `fetch` to make a request to the `find` Data API endpoint using the `baseUrl`, `fetchOptions`, and `fetchBody` variables. You will need to `stringify` the body of the request.
-
-> Hint: Since this is an `async` function, you can use the `await` keyword.
-
-After you have received the `json` from the request, return the `json` to the client along with a status code of `200`.
-
-> Hint: The response will contain a top level `documents` property that contains the documents returned from the request.
-
-### Test
-
-To test your application, from the terminal, run the following command:
-
-```bash
 npm run dev
 ```
 
-You can now navigate to `http://localhost:3000/api/flutter/` and see the response. You can also open `http://localhost:3000` to see the application with limited functionality.
+Open the browser and navigate to `http://localhost:3000`.
 
-<details>
-<summary>Show solution</summary>
+You should now only be able to update or delete your own flutters.
 
-```js
-case "GET":
-  const readData = await fetch(`${baseUrl}/find`, {
-    ...fetchOptions,
-    body: JSON.stringify({
-      ...fetchBody,
-      sort: { postedAt: -1 },
-    }),
-  });
-  const readDataJson = await readData.json();
-  res.status(200).json(readDataJson.documents);
-  break;
-```
-</details>
-<br>
+## Task 6: Set rules for the `user` collection
 
-## Task 4: Create the `insertOne` endpoint
-
-Create within the `switch` statement a `POST` request case.
-
-Within the `POST` case, create a `flutter` variable and set it equal to the `req.body` property. Our application will pass the new document using the body property of the request.
-
-Within the `POST` case, you should use `fetch` to make a request to the `insertOne` Data API endpoint using the `baseUrl`, `fetchOptions`, and `fetchBody` variables. You will need to `stringify` the body of the request. 
-
-Add to the `body` object a `document` field with its value set to the `flutter` variable.
-
-After you have received the `json` from the request, return the `json` to the client along with a status code of `200`.
-
-> Hint: The response will not contain the document this time, but an indicaiton of what actions were performed on the database.
-
-### Test
-
-Test your application. If it is not already running, from the terminal, run the following command:
-
-```bash
-npm run dev
-```
-
-You can now navigate to `http://localhost:3000` and test creating a new flutter.
-
-<details>
-<summary>Show solution</summary>
-
-```js
-case "POST":
-  const flutter = req.body;
-  const insertData = await fetch(`${baseUrl}/insertOne`, {
-    ...fetchOptions,
-    body: JSON.stringify({
-      ...fetchBody,
-      document: flutter,
-    }),
-  });
-  const insertDataJson = await insertData.json();
-  res.status(200).json(insertDataJson);
-  break;
-```
-</details>
-<br>
-
-## Task 5: Create the `updateOne` endpoint
-
-Create within the `switch` statement a `PUT` request case.
-
-Within the `POST` case, you should use `fetch` to make a request to the `updateOne` Data API endpoint using the `baseUrl`, `fetchOptions`, and `fetchBody` variables. You will need to `stringify` the body of the request. 
-
-Add to the `body` object a `filter` to define which document we want to update. This should filter by the `_id` field of the document using the `req.body._id`.
-
-> Hint: You can define an `objectId` using the MongoDB `$oid` operator.
-
-Also, add to the `body` object a `update` field to define the fields of the document that will be updated. Use the `$set` operator to update the flutters `body` field to `req.body.body`.
-
-After you have received the `json` from the request, return the `json` to the client along with a status code of `200`.
-
-> Hint: The response will not contain the document this time, but an indicaiton of what actions were performed on the database.
-
-### Test
-
-Test your application. If it is not already running, from the terminal, run the following command:
-
-```bash
-npm run dev
-```
-
-You can now navigate to `http://localhost:3000` and test editing and updating an existing flutter.
-
-<details>
-<summary>Show solution</summary>
-
-```js
-case "PUT":
-  const updateData = await fetch(`${baseUrl}/updateOne`, {
-    ...fetchOptions,
-    body: JSON.stringify({
-      ...fetchBody,
-      filter: { _id: { $oid: req.body._id } },
-      update: {
-        $set: {
-          body: req.body.body,
-        },
-      },
-    }),
-  });
-  const updateDataJson = await updateData.json();
-  res.status(200).json(updateDataJson);
-  break;
-```
-</details>
-<br>
-
-## Task 6: Create the `deleteOne` endpoint
-
-Create within the `switch` statement a `DELETE` request case.
-
-Within the `DELETE` case, you should use `fetch` to make a request to the `deleteOne` Data API endpoint using the `baseUrl`, `fetchOptions`, and `fetchBody` variables. You will need to `stringify` the body of the request. 
-
-Add to the `body` object a `filter` to define which document we want to update. This should filter by the `_id` field of the document using the `req.body._id`.
-
-> Hint: You can define an `objectId` using the MongoDB `$oid` operator.
-
-After you have received the `json` from the request, return the `json` to the client along with a status code of `200`.
-
-> Hint: The response will not contain the document this time, but an indicaiton of what actions were performed on the database.
-
-### Test
-
-Test your application. If it is not already running, from the terminal, run the following command:
-
-```bash
-npm run dev
-```
-
-You can now navigate to `http://localhost:3000` and test deleting an existing flutter.
-
-<details>
-<summary>Show solution</summary>
-
-```js
-case "DELETE":
-  const deleteData = await fetch(`${baseUrl}/deleteOne`, {
-    ...fetchOptions,
-    body: JSON.stringify({
-      ...fetchBody,
-      filter: { _id: { $oid: req.body._id } },
-    }),
-  });
-  const deleteDataJson = await deleteData.json();
-  res.status(200).json(deleteDataJson);
-  break;
-```
-</details>
-<br>
+From the Atlas Data API Realm App:
+1. Select **Rules** from the left menu.
+1. Select the new `users` collection.
+1. Choose the template: Users can only read and write their own data.
+1. Set the **Field Name For User ID** to `id`.
+1. Click **Configure Collection**.
+1. Click **Save**.
 
 ---
 
-Great job! Let's move on to the [next lesson]() ->
+Great job! Let's move on to the [next exercise]() ->
