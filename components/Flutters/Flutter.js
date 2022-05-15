@@ -81,7 +81,7 @@ const Flutter = ({ flutter, setFlutters }) => {
 
     const responseJson = await response.json();
 
-    console.log(responseJson);
+    console.log(responseJson); // add verification check
 
     setFlutters((flutters) =>
       flutters.map((flutter) => {
@@ -116,6 +116,8 @@ const Flutter = ({ flutter, setFlutters }) => {
       }),
     });
 
+    // Add verification check
+
     setLikesState((likes) => {
       if (likesState.includes(user.id)) {
         return likes.filter((like) => like !== user.id);
@@ -137,7 +139,7 @@ const Flutter = ({ flutter, setFlutters }) => {
     });
     const responseJson = await response.json();
     setDeleted(true);
-    console.log(responseJson);
+    console.log(responseJson);  // add verification check
   };
 
   return (

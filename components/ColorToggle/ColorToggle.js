@@ -4,6 +4,8 @@ import { Sun, MoonStars } from 'tabler-icons-react';
 const ColorToggle = () => {
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
 
+  // TODO: Keep track of user color scheme preference
+
   return (
     <Group position="center" my="xl">
       <ActionIcon

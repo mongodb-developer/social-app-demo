@@ -28,7 +28,7 @@ export default function Home() {
 
   return (
     <AppShell
-      header={<HeaderSearch />}
+      header={<HeaderSearch setFlutters={setFlutters} />}
       navbar={<Navbar />}
       styles={(theme) => ({
         main: {
@@ -42,7 +42,6 @@ export default function Home() {
       <LoadingOverlay visible={isLoading} />
       <CreateFlutter setFlutters={setFlutters} />
       <Flutters flutters={flutters} setFlutters={setFlutters} />
-      <Profile />
     </AppShell>
   );
 }

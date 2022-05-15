@@ -58,9 +58,20 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-const HeaderSearch = () => {
+const HeaderSearch = ({ setFlutters }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const { classes } = useStyles();
+
+  const handleSearch = async (e) => {
+    const term = e.currentTarget.value;
+    setSearchTerm(e.currentTarget.value);
+
+    if(term.length > 2) {
+      const getFlutters = await fetch(`/api/flutter/${term}`)
+      const getFluttersJson = await getFlutters.json();
+      setFlutters(getFluttersJson);
+    }
+  };
 
   return (
     <Header height={56} className={classes.header}>
@@ -69,7 +80,7 @@ const HeaderSearch = () => {
         <Group>
           <TextInput
             value={searchTerm}
-            onChange={(e) => setSearchTerm(e.currentTarget.value)}
+            onChange={(e) => handleSearch(e)}
             className={classes.search}
             placeholder="Search"
             icon={<Search size={16} />}

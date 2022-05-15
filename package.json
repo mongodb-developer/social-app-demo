@@ -17,6 +17,8 @@
     "@mantine/modals": "^4.2.2",
     "@mantine/next": "^4.2.2",
     "@mantine/notifications": "^4.2.2",
+    "aws-sdk": "^2.1131.0",
+    "formidable": "^2.0.1",
     "next": "12.1.6",
     "react": "18.1.0",
     "react-dom": "18.1.0",

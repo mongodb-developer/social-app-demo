@@ -25,7 +25,7 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-const UserButton = () => {
+const UserButton = ({ ...others }) => {
   const user = useUser();
   const { classes, theme } = useStyles();
   const menuIconColor =
@@ -34,7 +34,7 @@ const UserButton = () => {
   return (
     <Menu
       control={
-        <UnstyledButton className={classes.user}>
+        <UnstyledButton className={classes.user} {...others}>
           <Group>
             <Avatar src={user.picture} radius="xl" />
 
