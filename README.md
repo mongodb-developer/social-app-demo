@@ -20,6 +20,7 @@ In order to successfully complete the tasks in this workshop, you should have:
 - Familiarity with JavaScript
 - Accounts: MongoDB Atlas, GitHub, Vercel, Auth0. (All Free)
 - Node.js installed on your computer (12.2x / 14.x)
+- git installed on your computer
 - Code Editor (VS Code recommended)
 
 That's it 🙌 *(no prior knowledge of MongoDB is required)*
