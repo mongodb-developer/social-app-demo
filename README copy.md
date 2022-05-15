@@ -1,6 +1,6 @@
-# Lesson 5
+# Exercise 5
 
-<- Back to [previous lesson]()
+<- Back to [previous exercise]()
 
 ---
 
@@ -240,4 +240,4 @@ case "DELETE":
 
 ---
 
-Great job! Let's move on to the [next lesson]() ->
+Great job! Let's move on to the [next exercise]() ->
