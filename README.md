@@ -1,6 +1,6 @@
-# Exercise 1
+# Lesson 1
 
-<- Back to [previous exercise]()
+<- Back to [previous lesson]()
 
 ---
 
@@ -12,4 +12,4 @@ The goal of this lesson is to get the project set up in your local environment.
 
 Fork the [workshop repo](https://github.com/mongodb-developer/social-app-demo) then clone your fork locally.
 
-This repo contains several branches. Let's continue on to the [next exercise]() ->
+This repo contains several branches. Let's continue on to the [next lesson]() ->
