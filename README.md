@@ -1,6 +1,6 @@
-# Exercise 6
+# Lesson 6
 
-<- Back to [previous exercise]()
+<- Back to [previous lesson]()
 
 ---
 
@@ -99,4 +99,4 @@ From the Atlas Data API Realm App:
 
 ---
 
-Great job! Let's move on to the [next exercise]() ->
+Great job! Let's move on to the [next lesson]() ->
