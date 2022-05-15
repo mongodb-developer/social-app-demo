@@ -10,7 +10,7 @@ export default withApiAuthRequired(async function handler(req, res) {
     const { user } = await getSession(req, res);
 
     const baseUrl =
-      "https://data.mongodb-api.com/app/data-vbhdy/endpoint/data1/beta/action";
+    `https://data.mongodb-api.com/app/${process.env.AUTH0_AUDIENCE}/endpoint/data/beta/action`;
 
     switch (req.method) {
       case "GET":
@@ -88,7 +88,7 @@ export default withApiAuthRequired(async function handler(req, res) {
         const updateDataJson = await updateData.json();
         res.status(200).json(updateDataJson);
         break;
-      default: //Method Not Allowed
+      default:
         res.status(405).end();
         break;
     }

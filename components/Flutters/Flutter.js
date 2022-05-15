@@ -48,10 +48,12 @@ const useStyles = createStyles((theme) => ({
 }));
 
 const Flutter = ({ flutter, setFlutters }) => {
-  const { _id, postedAt, body, user: flutterUser } = flutter;
+  const { _id, postedAt, body, user: flutterUser, likes } = flutter;
   const user = useUser();
   const [modalOpened, setModalOpened] = useState(false);
   const [deleted, setDeleted] = useState(false);
+  const [updatingLike, setUpdatingLike] = useState(false);
+  const [likesState, setLikesState] = useState(likes);
   const { classes, theme } = useStyles();
 
   const form = useForm({
@@ -96,6 +98,31 @@ const Flutter = ({ flutter, setFlutters }) => {
 
     form.reset();
     setModalOpened(false);
+  };
+
+  const likeFlutter = async () => {
+    setUpdatingLike(true);
+    let action = likesState.includes(user.id) ? "$pull" : "$addToSet";
+
+    const response = await fetch("/api/flutter/like", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        _id,
+        userId: user.id,
+        action,
+      }),
+    });
+
+    setLikesState((likes) => {
+      if (likesState.includes(user.id)) {
+        return likes.filter((like) => like !== user.id);
+      }
+      return [...likes, user.id];
+    });
+    setUpdatingLike(false);
   };
 
   const deleteFlutter = async () => {
@@ -160,13 +187,17 @@ const Flutter = ({ flutter, setFlutters }) => {
             <Card.Section className={classes.footer}>
               <Group position="apart">
                 <Text size="xs" color="dimmed">
-                  0 people liked this
+                  {likesState ? likesState.length : 0}
+                  {` ${likesState.length === 1 ? "person" : "people"} liked this`}
                 </Text>
                 <Group spacing={0}>
-                  <ActionIcon size="lg">
+                  <ActionIcon onClick={() => likeFlutter()} size="lg" loading={updatingLike}>
                     <Heart
                       size={18}
                       color={theme.colors.red[6]}
+                      className={
+                        likesState.includes(user.id) ? classes.liked : null
+                      }
                     />
                   </ActionIcon>
                   <Menu
