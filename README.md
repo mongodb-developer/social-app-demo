@@ -1,4 +1,4 @@
-# Lesson 2
+# Lesson 4
 
 <- Back to [previous lesson]()
 
@@ -6,40 +6,80 @@
 
 ## Goal
 
-The goal of this lesson is to create a MongoDB Atals Cluter and enable the Atlas Data API.
+The goal of this lesson is to test accessing the Data API. We'll use Postman to test the API.
 
-## Task 1: Sign up for a MongoDB Atlas Account
- 
-Sign up for a [MongoDB Atlas account](https://mongodb.com/atlas/register2) if you don't already have one.
+> Reference the [Data API Resource Docs](https://www.mongodb.com/docs/atlas/api/data-api-resources/) for hints.
 
-## Task 2: Create a MongoDB Atlas Cluster
+## Available Data API endpoints
 
-Create a free shared MongoDB Atlas Cluster.
+The endpoints available from the Atlas Data API are:
+- `/action/find`
+- `/action/findOne`
+- `/action/insertOne`
+- `/action/insertMany`
+- `/action/updateOne`
+- `/action/updateMany`
+- `/action/replaceOne`
+- `/action/deleteOne`
+- `/action/deleteMany`
+- `/action/aggregate`
 
-## Task 3: Enable the Atlas Data API
+## Request parameters needed
 
-1. From the Atlas dashboard, select **Data API** from the left menu.
-1. Enable the Data API for your cluster.
+Each endpoint must use the `POST` method.
 
-## Task 4: Create a Data API Key
+The base URL for each endpoint is: `https://data.mongodb-api.com/app/<Data API App ID>/endpoint/data/beta`.
 
-1. From the **Data API** page, select the **Create API key** button at the top right.
-1. Name your key anything you want, then select the **Generate API Key** button.
-1. Copy the API key and save it somewhere (you will not be able to see it again)
+Each request must include the following headers:
+- `Content-Type`: `application/json`
+- `Access-Control-Request-Headers`: `*`
+- `api-key`: `<Data API Key>`
 
-## Task 5: Enable network and user access
+Each request must include, at minimum, the following in body:
+- `dataSource`: `<cluster name>`
+- `database`: `<database name>`
+- `collection`: `<collection name>`
 
-1. Select **Database Access** from the left menu.
-  - Add a new user. Save the user name and password for later.
-1. Select **Network Access** from the left menu
-  - Add an IP address to the access list. (Either your IP address or allow access from anywhere).
+## Task 1: Add connection variables
 
-## Task 6: Get your database connection string
+From the **Data API** page in your Atlas dashboard, select the **Test Your API** button on the top right. In the modal, select the **Run in Postman** button.
 
-1. Select **Database** from the left menu.
-1. Select the **Connect** button on your cluster.
-1. Choose "Connect using MongoDB Compass".
-1. Copy the connection string and save it for later.
+> You can run from either a local installation of Postman or from the web version. This does require that you have a Postman account.
+
+Import the collection into any of your workspaces.
+
+On the **Variables** tab, add values to the following variables:
+- `URL_ENDPOINT`: `https://data.mongodb-api.com/app/<Data API App ID>/endpoint/data/beta`
+- `API_KEY`: `<Data API Key>`
+- `DATA_SOURCE`: `<cluster name>`
+- `DATABASE`: `social_butterfly`
+- `COLLECTION`: `flutters`
+
+Press the **Save** button on the top right to save the variables.
+
+## Task 2: Test the `findOne` endpoint
+
+Expand **MongoDB Data API** in your workspace and select the **Find Document** request.
+
+Notice that this is a `POST` request and is using the `/action/findOne` endpoint. This endpoint is used to find a single document.
+
+Select the **Headers** tab and notice the headers that are added along with your API key from your variables. 
+
+Now select the **Body** tab. Notice the `dataSource`, `database`, and `collection` variables that are added from your variables.
+
+For now, remove the `filter` line and click the **Send** button.
+
+If should respond with the first document in the collection.
+
+## Task 3: Add a filter to the `findOne` request
+
+Let's add the filter back in. We are going to filter for a document that contains "dad-a-base" in the `body` field. We can use the `$regex` operator to do this.
+
+```js
+"filter": { "body": { "$regex" : "dad-a-base", "$options" : "i" } }
+```
+
+Click the **Send** button again and you should get the document.
 
 ---
 
