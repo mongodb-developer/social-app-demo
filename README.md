@@ -11,7 +11,7 @@ This workshop will show you how you can connect to MongoDB Atlas in your Jamstac
 ## What we'll cover in this workshop
 
 - ~15 minutes of slides explaining Jamstack, serverless, and how the MongoDB Atlas Data API fits into these.
-- Hands-on exercises resulting in you building a fully functional, deployed application. 
+- Hands-on lesson resulting in you building a fully functional, deployed application. 
 
 ## Prerequisites
 
@@ -29,22 +29,22 @@ That's it 🙌 *(no prior knowledge of MongoDB is required)*
 
 - 
 
-## Hands-on exercises
+## Hands-on lesson
 
-This repo is broken up into several branches. Each branch contains a set of exercises and builds upon the previous exercises.
+This repo is broken up into several branches. Each branch contains a set of lesson and builds upon the previous lesson.
 
-Throughout the workshop, you'll be working on the following exercises:
-1. [Exercise 1]()
-2. [Exercise 2]()
-3. [Exercise 3]()
-4. [Exercise 4]()
-5. [Exercise 5]()
-6. [Exercise 6]()
-7. [Exercise 7]()
-8. [Exercise 8]()
-9. [Exercise 9]()
-10. [Exercise 10]()
+Throughout the workshop, you'll be working on the following lesson:
+1. [Lesson 1]()
+2. [Lesson 2]()
+3. [Lesson 3]()
+4. [Lesson 4]()
+5. [Lesson 5]()
+6. [Lesson 6]()
+7. [Lesson 7]()
+8. [Lesson 8]()
+9. [Lesson 9]()
+10. [Lesson 10]()
 
 ---
 
-Let's get started with the [first exercise]()!
+Let's get started with the [first lesson]()!
