@@ -4,16 +4,14 @@ Live Demo: [https://social-mongodb-demo.vercel.app/](https://social-mongodb-demo
 
 ## Introduction
 
-Who here loves the Jamstack? Who here loves to create all of the boilerplate code required create CRUD connections to databases in thier Jamstack applications?
+Do you love the Jamstack? Do you love to create all of the boilerplate code required to connect to databases in their Jamstack applications?
 
 This workshop will show you how you can connect to MongoDB Atlas in your Jamstack application with minimal effort and without using any drivers.
 
 ## What we'll cover in this workshop
 
 - ~15 minutes of slides explaining Jamstack, serverless, and how the MongoDB Atlas Data API fits into these.
-- Hands-on exercises resulting in a fully functional, deployed application. 
-- Show example of finished application (URL)
-- Time breakdown: TBD
+- Hands-on exercises resulting in you building a fully functional, deployed application. 
 
 ## Prerequisites
 
@@ -26,32 +24,29 @@ In order to successfully complete the tasks in this workshop, you should have:
 
 That's it 🙌 *(no prior knowledge of MongoDB is required)*
 
-## What is the Jamstack?
+## Slides
 
-- Definition
-- What problems does the Jamstack solve?
-- Some popular frameworks in the Jamstack
+- 
 
-## Serverless
+## Hands-on exercises
 
-- Definition
-- What problems does the serverless paradigm solve?
-- What is considered a serverless architecture?
-- MongoDB Serverless Instances
+This repo is broken up into several branches. Each branch contains a set of exercises and builds upon the previous exercises.
 
-## Atlas Serverless Functions & HTTPS Endpoints
+Throughout the workshop, you'll be working on the following exercises:
+1. [Exercise 1]()
+2. [Exercise 2]()
+3. [Exercise 3]()
+4. [Exercise 4]()
+5. [Exercise 5]()
+6. [Exercise 6]()
+7. [Exercise 7]()
+8. [Exercise 8]()
+9. [Exercise 9]()
+10. [Exercise 10]()
 
-- What are HTTPS Endpoints?
-- What is an Atlas Serverless Function?
-- How to set up and use an Atlas Serverless Functions
-- The Data API is pre-built serverless functions
+---
 
-## The Data API
-
-- HTTP endpoints
-- No Drivers
-- Posibilites / Benefits
-- When not to use the Data API
+Let's get started with the [first exercise]()!
 
 ## Exercise 1: Create a MongoDB Atlas Cluster
 

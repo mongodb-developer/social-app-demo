@@ -1,7 +1,8 @@
+import { useState } from "react";
 import {
   createStyles,
   Header,
-  Autocomplete,
+  TextInput,
   Group,
 } from "@mantine/core";
 import ColorToggle from "../ColorToggle/ColorToggle";
@@ -57,27 +58,32 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-const HeaderSearch = ({ links }) => {
+const HeaderSearch = ({ setFlutters, setIsLoading }) => {
+  const [searchTerm, setSearchTerm] = useState("");
   const { classes } = useStyles();
+
+  const handleSearch = async (e) => {
+    const term = e.currentTarget.value;
+    setSearchTerm(e.currentTarget.value);
+
+    if(term.length > 2) {
+      const getFlutters = await fetch(`/api/flutter/${term}`)
+      const getFluttersJson = await getFlutters.json();
+      setFlutters(getFluttersJson);
+    }
+  };
 
   return (
     <Header height={56} className={classes.header}>
       <div className={classes.inner}>
         <Logo width={240} />
         <Group>
-          <Autocomplete
+          <TextInput
+            value={searchTerm}
+            onChange={(e) => handleSearch(e)}
             className={classes.search}
             placeholder="Search"
             icon={<Search size={16} />}
-            data={[
-              "React",
-              "Angular",
-              "Vue",
-              "Next.js",
-              "Riot.js",
-              "Svelte",
-              "Blitz.js",
-            ]}
           />
           <ColorToggle />
         </Group>
