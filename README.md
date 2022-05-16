@@ -86,27 +86,27 @@ From the Atlas Data API Realm App:
 
 We need to add environment variables in order to connect to Auth0.
 1. Add the following environment variables to your `.env.local` file:
-  ```env
-  AUTH0_SECRET='use [openssl rand -hex 32] to generate a 32 bytes value'
-  AUTH0_BASE_URL='http://localhost:3000'
-  AUTH0_ISSUER_BASE_URL='https://<account>.us.auth0.com'
-  AUTH0_CLIENT_ID='<client_id>'
-  AUTH0_CLIENT_SECRET='<client_secret>'
-  AUTH0_AUDIENCE=<data_api_id>
-  AUTH0_SCOPE=openid email profile
-  ```
-  - Replace all placeholders with your Auth0 information.
-  - For `AUTH0_SECRET`, run: `openssl rand -hex 32` in your terminal to generate a 32 bytes value. Place this as the value for `AUTH0_SECRET`.
+    ```env
+    AUTH0_SECRET='use [openssl rand -hex 32] to generate a 32 bytes value'
+    AUTH0_BASE_URL='http://localhost:3000'
+    AUTH0_ISSUER_BASE_URL='https://<account>.us.auth0.com'
+    AUTH0_CLIENT_ID='<client_id>'
+    AUTH0_CLIENT_SECRET='<client_secret>'
+    AUTH0_AUDIENCE=<data_api_id>
+    AUTH0_SCOPE=openid email profile
+    ```
+    - Replace all placeholders with your Auth0 information.
+    - For `AUTH0_SECRET`, run: `openssl rand -hex 32` in your terminal to generate a 32 bytes value. Place this as the value for `AUTH0_SECRET`.
 
 ## Overview of changes to the code base
 
 1. `pages/api/auth/[...auth0].js`
-  - This file handles all of the authentication routes for the Auth0 API. (login, logout, etc.)
+    - This file handles all of the authentication routes for the Auth0 API. (login, logout, etc.)
 1. `pages/api/flutter/index.js`
-  - We are now using Auth0 to protect this endpoint, and we are getting the user's access token to pass to the Data API.
-  - Instead of `api-key`, we are now using the `jwtTokenString` for authentication to the Data API.
+    - We are now using Auth0 to protect this endpoint, and we are getting the user's access token to pass to the Data API.
+    - Instead of `api-key`, we are now using the `jwtTokenString` for authentication to the Data API.
 1. `pages/api/user/index.js`
-  - We have a new `user` route that gets and updates the user's data.
+    - We have a new `user` route that gets and updates the user's data.
 
 ## Task 7: Install dependencies and test
 
