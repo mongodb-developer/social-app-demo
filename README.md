@@ -1,6 +1,6 @@
 # Lesson 8
 
-<- Back to [previous lesson]()
+<- Back to [previous lesson](https://github.com/mongodb-developer/social-app-demo/tree/7-lesson)
 
 ---
 
@@ -42,4 +42,6 @@ case "PUT":
 
 ---
 
-Great job! Let's move on to the [next lesson]() ->
+Great job! Let's move on to the [next lesson](https://github.com/mongodb-developer/social-app-demo/tree/9-lesson) ->
+
+> Be sure to switch to the `9-lesson` branch in your local environment.
