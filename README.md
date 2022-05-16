@@ -1,4 +1,4 @@
-# Lesson 6
+# Lesson 7
 
 <- Back to [previous lesson]()
 
