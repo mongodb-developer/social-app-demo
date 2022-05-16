@@ -32,9 +32,9 @@ Create a free shared MongoDB Atlas Cluster.
 ## Task 5: Enable network and user access
 
 1. Select **Database Access** from the left menu.
-  - Add a new user. Save the user name and password for later.
+    - Add a new user. Save the user name and password for later.
 1. Select **Network Access** from the left menu
-  - Add an IP address to the access list. (Either your IP address or allow access from anywhere).
+    - Add an IP address to the access list. (Either your IP address or allow access from anywhere).
 
 ## Task 6: Get your database connection string
 
