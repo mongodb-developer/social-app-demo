@@ -34,17 +34,19 @@ That's it 🙌 *(no prior knowledge of MongoDB is required)*
 This repo is broken up into several branches. Each branch contains a set of lesson and builds upon the previous lesson.
 
 Throughout the workshop, you'll be working on the following lesson:
-1. [Lesson 1]()
-2. [Lesson 2]()
-3. [Lesson 3]()
-4. [Lesson 4]()
-5. [Lesson 5]()
-6. [Lesson 6]()
-7. [Lesson 7]()
-8. [Lesson 8]()
-9. [Lesson 9]()
-10. [Lesson 10]()
+1. [Lesson 1](https://github.com/mongodb-developer/social-app-demo/tree/1-lesson)
+2. [Lesson 2](https://github.com/mongodb-developer/social-app-demo/tree/2-lesson)
+3. [Lesson 3](https://github.com/mongodb-developer/social-app-demo/tree/3-lesson)
+4. [Lesson 4](https://github.com/mongodb-developer/social-app-demo/tree/4-lesson)
+5. [Lesson 5](https://github.com/mongodb-developer/social-app-demo/tree/5-lesson)
+6. [Lesson 6](https://github.com/mongodb-developer/social-app-demo/tree/6-lesson)
+7. [Lesson 7](https://github.com/mongodb-developer/social-app-demo/tree/7-lesson)
+8. [Lesson 8](https://github.com/mongodb-developer/social-app-demo/tree/8-lesson)
+9. [Lesson 9](https://github.com/mongodb-developer/social-app-demo/tree/9-lesson)
+10. [Lesson 10](https://github.com/mongodb-developer/social-app-demo/tree/10-lesson)
 
 ---
 
-Let's get started with the [first lesson]()!
+Let's get started with the [first lesson](https://github.com/mongodb-developer/social-app-demo/tree/1-lesson) ->
+
+> Be sure to switch to the `1-lesson` branch in your local project.
