@@ -49,16 +49,16 @@ From the Atlas dashboard:
 1. Event Type: Function
 1. Function: New Function
     - Name: `addUserToDatabase`
-  ```js
-  exports = function(authEvent) {
-    const user = authEvent.user;
-    const mongodb = context.services.get("Cluster0");
-    const usersCollection = mongodb.db("social_butterfly").collection("users");
-    usersCollection.insertOne({
-      ...user
-    });
-  };
-  ```
+    ```js
+    exports = function(authEvent) {
+      const user = authEvent.user;
+      const mongodb = context.services.get("Cluster0");
+      const usersCollection = mongodb.db("social_butterfly").collection("users");
+      usersCollection.insertOne({
+        ...user
+      });
+    };
+    ```
 1. Click **Save**.
 
 ## Task 4: Set rules for the `flutters` collection
