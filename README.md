@@ -1,6 +1,6 @@
 # Lesson 6
 
-<- Back to [previous lesson]()
+<- Back to [previous lesson](https://github.com/mongodb-developer/social-app-demo/tree/5-lesson)
 
 ---
 
@@ -49,4 +49,6 @@ Open the `find` function to see the code.
 
 ---
 
-Great job! Let's move on to the [next lesson]() ->
+Great job! Let's move on to the [next lesson](https://github.com/mongodb-developer/social-app-demo/tree/7-lesson) ->
+
+> Be sure to switch to the `7-lesson` branch in your local environment.
