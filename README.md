@@ -1,6 +1,6 @@
 # Lesson 3
 
-<- Back to [previous lesson]()
+<- Back to [previous lesson](https://github.com/mongodb-developer/social-app-demo/tree/2-lesson)
 
 ---
 
@@ -38,4 +38,6 @@ Install [MongoDB Compass](https://www.mongodb.com/try/download/compass) if you d
 
 ---
 
-Great job! Let's move on to the [next lesson]() ->
+Great job! Let's move on to the [next lesson](https://github.com/mongodb-developer/social-app-demo/tree/4-lesson) ->
+
+> Be sure to switch to the `4-lesson` branch in your local environment.
