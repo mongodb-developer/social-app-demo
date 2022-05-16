@@ -6,7 +6,7 @@
 
 ## Goal
 
-The goal of this lesson is to create a MongoDB Atals Cluter and enable the Atlas Data API.
+The goal of this lesson is to create a MongoDB Atlas Cluter and enable the Atlas Data API.
 
 ## Task 1: Sign up for a MongoDB Atlas Account
  
@@ -26,6 +26,8 @@ Create a free shared MongoDB Atlas Cluster.
 1. From the **Data API** page, select the **Create API key** button at the top right.
 1. Name your key anything you want, then select the **Generate API Key** button.
 1. Copy the API key and save it somewhere (you will not be able to see it again)
+
+> Technically, this is all we have to do in order to enable the Data API. The next 2 tasks will allow us to connect to our database and load sample data in our next lesson.
 
 ## Task 5: Enable network and user access
 
