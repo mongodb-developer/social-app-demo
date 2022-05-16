@@ -33,23 +33,23 @@ The Data API endpoint for this route should be `/aggregate`.
 
 To use the search index, include a `pipeline` in the request body.
 
-Here is an example pipeline using a search index:
-
-```js
-[
-  {
-    $search: {
-      index: 'default', // The name of the index
-      text: {
-        query: 'Hello', // The search term
-        path: {
-          'wildcard': '*' // The fields to search
-        }
-      }
-    }
-  }
-]
-```
+> Here is an example pipeline using a search index:
+>
+> ```js
+> [
+>   {
+>     $search: {
+>       index: "default", // The name of the index
+>       text: {
+>         query: "Hello", // The search term
+>         path: {
+>           wildcard: "*", // The fields to search
+>         },
+>       },
+>     },
+>   },
+> ];
+> ```
 
 After the search pipeline stage, add a sort stage that sorts descending on the `postedAt` field.
 
@@ -92,6 +92,7 @@ case "GET":
   res.status(200).json(readDataJson.documents);
   break;
 ```
+
 </details>
 <br>
 
