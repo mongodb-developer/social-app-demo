@@ -49,11 +49,11 @@ const CreateFlutter = ({ setFlutters }) => {
     const responseJson = await response.json();
     
     setFlutters((flutters) => [
-      ...flutters,
       {
         _id: responseJson.insertedId,
         ...flutter
       },
+      ...flutters,
     ]);
     // notify flutter created
     form.reset();
