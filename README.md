@@ -16,7 +16,7 @@ You can get to the Atlas Data API App in two ways:
 
 From this page, you can see the Functions, HTTPS Endpoints, and other settings for the Data API App.
 
-## Task 1: HTTPS Endpoints
+## Task 2: HTTPS Endpoints
 
 Select **HTTPS Endpoints** from the left menu.
 
@@ -26,7 +26,7 @@ Within this endpoint, you will see the Atlas Function that it calls.
 
 Since we'll be customizing user authentication in the following lesson, we'll need to set the **Create User Upon Authentication** option to `On`.
 
-## Task 2: Atlas Functions
+## Task 3: Atlas Functions
 
 Select **Functions** from the left menu.
 
