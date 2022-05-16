@@ -1,6 +1,6 @@
 # Lesson 2
 
-<- Back to [previous lesson]()
+<- Back to [previous lesson](https://github.com/mongodb-developer/social-app-demo/tree/2-lesson)
 
 ---
 
@@ -43,4 +43,6 @@ Create a free shared MongoDB Atlas Cluster.
 
 ---
 
-Great job! Let's move on to the [next lesson]() ->
+Great job! Let's move on to the [next lesson](https://github.com/mongodb-developer/social-app-demo/tree/3-lesson) ->
+
+> Be sure to switch to the `3-lesson` branch in your local environment.
