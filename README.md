@@ -94,7 +94,6 @@ case "GET":
 ```
 
 </details>
-<br>
 
 ---
 
