@@ -1,6 +1,6 @@
 # Lesson 4
 
-<- Back to [previous lesson]()
+<- Back to [previous lesson](https://github.com/mongodb-developer/social-app-demo/tree/3-lesson)
 
 ---
 
@@ -83,4 +83,6 @@ Click the **Send** button again and you should get the document.
 
 ---
 
-Great job! Let's move on to the [next lesson]() ->
+Great job! Let's move on to the [next lesson](https://github.com/mongodb-developer/social-app-demo/tree/5-lesson) ->
+
+> Be sure to switch to the `5-lesson` branch in your local environment.
