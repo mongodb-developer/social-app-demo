@@ -10,10 +10,25 @@ export default withApiAuthRequired(async function handler(req, res) {
     const { user } = await getSession(req, res);
 
     const baseUrl =
-      "https://data.mongodb-api.com/app/data-vbhdy/endpoint/data1/beta/action";
+    `https://data.mongodb-api.com/app/${process.env.AUTH0_AUDIENCE}/endpoint/data/beta/action`;
 
     switch (req.method) {
       case "GET":
+        // TEMPORARY SOLUTION FOR DRY RUN
+        await fetch(`https://data.mongodb-api.com/app/${process.env.AUTH0_AUDIENCE}/endpoint/createUser`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Request-Headers": "*",
+            jwtTokenString: accessToken,
+          },
+          body: JSON.stringify({
+            dataSource: "Cluster0",
+            database: "social_butterfly",
+            collection: "flutters",
+          }),
+        });
+        // END TEMP SOLUTION
         const readData = await fetch(`${baseUrl}/findOne`, {
           method: "POST",
           headers: {
@@ -30,7 +45,7 @@ export default withApiAuthRequired(async function handler(req, res) {
 
         const readDataJson = await readData.json();
 
-        if (!readDataJson.document.email) {
+        if (!readDataJson.document?.email) {
           await fetch(`${baseUrl}/updateOne`, {
             method: "POST",
             headers: {

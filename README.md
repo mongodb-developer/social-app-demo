@@ -48,6 +48,30 @@ From the Atlas Data API Realm App:
 1. Click **Configure Collection**.
 1. Click **Save**.
 
+## Task 4: Add trigger to create users
+
+1. Select **Triggers** from the left menu.
+1. Slect **Add a Trigger**.
+1. Trigger Type: Authentication
+1. Name: `AddUserToDatabase`
+1. Enabled: On
+1. Action Type: Create
+1. Provider: Custom JWT Authentication
+1. Event Type: Function
+1. Function: New Function
+  - Name: `addUserToDatabase`
+  ```js
+  exports = function(authEvent) {
+    const user = authEvent.user;
+    const mongodb = context.services.get("Cluster0");
+    const usersCollection = mongodb.db("social_butterfly").collection("users");
+    usersCollection.insertOne({
+      ...user
+    });
+  };
+  ```
+1. Click **Save**.
+
 ## Task 4: Add environment variables
 
 We need to add environment variables in order to connect to Auth0.
