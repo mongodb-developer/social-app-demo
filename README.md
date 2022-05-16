@@ -58,7 +58,6 @@ const baseUrl =
 ```
 
 </details>
-<br>
 
 ## Task 4: Create the `find` endpoint
 
@@ -99,7 +98,6 @@ case "GET":
   break;
 ```
 </details>
-<br>
 
 ## Task 4: Create the `insertOne` endpoint
 
@@ -143,7 +141,6 @@ case "POST":
   break;
 ```
 </details>
-<br>
 
 ## Task 5: Create the `updateOne` endpoint
 
@@ -193,7 +190,6 @@ case "PUT":
   break;
 ```
 </details>
-<br>
 
 ## Task 6: Create the `deleteOne` endpoint
 
@@ -236,7 +232,6 @@ case "DELETE":
   break;
 ```
 </details>
-<br>
 
 ---
 
