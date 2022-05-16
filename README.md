@@ -23,32 +23,21 @@ From the Auth0 dashboard, create a new application.
 
 From the Auth0 dashboard, select **APIs** under **Applications** from the left menu.
 1. Click **Create API**
-1. Name it anything and set the identifier as your Data API ID.
+1. Name it anything and set the identifier as your **Data API ID**.
 
 ## Task 2: Set up Atlas authentication settings
+
 From the Atlas dashboard:
 1. Select **Database** from the left menu. 
-1. Select the **Linked Realm App** named "data".
+1. Select the **Linked Realm App** named `data`.
 1. From **Authentication**, edit **Custom JWT Authentication**.
 1. Enable Provider.
 1. Set **Verification Method** to: Use a JWK URI
 1. Set **JWK URI**: `https://<account>.us.auth0.com/.well-known/jwks.json`
   - Replace `<account>` with the beginning of your Auth0 domain.
-1. Click **Save**
-1. Enable "Create User" on the `Find` Data API endpoint
-  - This is currently not enabled in production. We may have to manually create users for testing during the dry run.
-
-## Task 3: Set rules for the `flutters` collection
-
-From the Atlas Data API Realm App:
-1. Select **Rules** from the left menu.
-1. Select the `flutters` collection.
-1. Choose the template: Users can read all data, but only write their own data.
-1. Set the **Field Name For User ID** to `user.id`.
-1. Click **Configure Collection**.
 1. Click **Save**.
 
-## Task 4: Add trigger to create users
+## Task 3: Add trigger to create users
 
 1. Select **Triggers** from the left menu.
 1. Slect **Add a Trigger**.
@@ -72,10 +61,31 @@ From the Atlas Data API Realm App:
   ```
 1. Click **Save**.
 
-## Task 4: Add environment variables
+## Task 4: Set rules for the `flutters` collection
+
+From the Atlas Data API Realm App:
+1. Select **Rules** from the left menu.
+1. Select the `flutters` collection.
+1. Choose the template: Users can read all data, but only write their own data.
+1. Set the **Field Name For User ID** to `user.id`.
+1. Click **Configure Collection**.
+1. Click **Save**.
+
+## Task 5: Set rules for the `user` collection
+
+From the Atlas Data API Realm App:
+1. Select **Rules** from the left menu.
+1. Select the **plus** button next to the cluster.
+1. Choose the `social_butterfly` database.
+1. Choose **Create New Option** for the collection, enter `users`, and click **Create**.
+1. Choose the template: Users can only read and write their own data.
+1. Set the **Field Name For User ID** to `id`.
+1. Click **Add Collection**.
+
+## Task 6: Add environment variables
 
 We need to add environment variables in order to connect to Auth0.
-1. Because we are in a different branch, rename the `.env.local.example` file to `.env.local`, add the following lines:
+1. Add the following environment variables to your `.env.local` file:
   ```env
   AUTH0_SECRET='use [openssl rand -hex 32] to generate a 32 bytes value'
   AUTH0_BASE_URL='http://localhost:3000'
@@ -98,7 +108,7 @@ We need to add environment variables in order to connect to Auth0.
 1. `pages/api/user/index.js`
   - We have a new `user` route that gets and updates the user's data.
 
-## Task 5: Install dependencies and test
+## Task 7: Install dependencies and test
 
 Because we are in a new branch, we will need to install the dependencies for this branch. Then we can start the application.
 
@@ -109,17 +119,7 @@ npm run dev
 
 Open the browser and navigate to `http://localhost:3000`.
 
-You should now only be able to update or delete your own flutters.
-
-## Task 6: Set rules for the `user` collection
-
-From the Atlas Data API Realm App:
-1. Select **Rules** from the left menu.
-1. Select the new `users` collection.
-1. Choose the template: Users can only read and write their own data.
-1. Set the **Field Name For User ID** to `id`.
-1. Click **Configure Collection**.
-1. Click **Save**.
+You should now *only* be able to update or delete your own flutters.
 
 ---
 
