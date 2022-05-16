@@ -38,7 +38,6 @@ case "PUT":
   break;
 ```
 </details>
-<br>
 
 ---
 
