@@ -1,6 +1,6 @@
 # Lesson 5
 
-<- Back to [previous lesson]()
+<- Back to [previous lesson](https://github.com/mongodb-developer/social-app-demo/tree/4-lesson)
 
 ---
 
@@ -240,4 +240,6 @@ case "DELETE":
 
 ---
 
-Great job! Let's move on to the [next lesson]() ->
+Great job! Let's move on to the [next lesson](https://github.com/mongodb-developer/social-app-demo/tree/6-lesson) ->
+
+> Be sure to switch to the `6-lesson` branch in your local environment.
