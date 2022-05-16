@@ -34,7 +34,7 @@ From the Atlas dashboard:
 1. Enable Provider.
 1. Set **Verification Method** to: Use a JWK URI
 1. Set **JWK URI**: `https://<account>.us.auth0.com/.well-known/jwks.json`
-  - Replace `<account>` with the beginning of your Auth0 domain.
+    - Replace `<account>` with the beginning of your Auth0 domain.
 1. Click **Save**.
 
 ## Task 3: Add trigger to create users
@@ -48,7 +48,7 @@ From the Atlas dashboard:
 1. Provider: Custom JWT Authentication
 1. Event Type: Function
 1. Function: New Function
-  - Name: `addUserToDatabase`
+    - Name: `addUserToDatabase`
   ```js
   exports = function(authEvent) {
     const user = authEvent.user;
