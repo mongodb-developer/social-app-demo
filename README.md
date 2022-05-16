@@ -1,6 +1,6 @@
 # Lesson 2
 
-<- Back to [previous lesson](https://github.com/mongodb-developer/social-app-demo/tree/2-lesson)
+<- Back to [previous lesson](https://github.com/mongodb-developer/social-app-demo/tree/1-lesson)
 
 ---
 
