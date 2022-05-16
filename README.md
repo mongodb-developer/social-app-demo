@@ -16,8 +16,7 @@ Use either the MongoDB VS Code extension or MongoDB Compass to load sample data 
 
 Install the [MongoDB VS Code extension](https://marketplace.visualstudio.com/items?itemName=mongodb.mongodb-vscode) if you haven't already.
 
-1. Go to the MongoDB tab in the activity bar.
-1. Add a MongoDB connetion using your connection string. Be sure to update the username and password.
+1. From the MongoDB tab in the activity bar, add a MongoDB connection using your connection string. Be sure to update the username and password.
 1. Right click your cluster and choose "Add Database...".
 1. Name the database `social_butterfly` and the collection `flutters`.
 1. Add a line after the collection is created to insert the sample data using the [`data.json`](data.json) file.
