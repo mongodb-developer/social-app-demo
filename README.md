@@ -48,5 +48,3 @@ Throughout the workshop, you'll be working on the following lesson:
 ---
 
 Let's get started with the [first lesson](https://github.com/mongodb-developer/social-app-demo/tree/1-lesson) ->
-
-> Be sure to switch to the `1-lesson` branch in your local environment.
