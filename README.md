@@ -10,7 +10,7 @@ The goal of this lesson is to create a MongoDB Atlas Cluter and enable the Atlas
 
 ## Task 1: Sign up for a MongoDB Atlas Account
  
-Sign up for a [MongoDB Atlas account](https://mongodb.com/atlas/register2) if you don't already have one.
+Sign up for a [MongoDB Atlas account](https://www.mongodb.com/cloud/atlas/register2) if you don't already have one.
 
 ## Task 2: Create a MongoDB Atlas Cluster
 
