@@ -20,9 +20,9 @@ Install the [MongoDB VS Code extension](https://marketplace.visualstudio.com/ite
 1. Right click your cluster and choose "Add Database...".
 1. Name the database `social_butterfly` and the collection `flutters`.
 1. Add a line after the collection is created to insert the sample data using the [`data.json`](data.json) file.
-  ```js
-  db.flutters.insertMany(...paste data.json here...)
-  ```
+    ```js
+    db.flutters.insertMany(...paste data.json here...)
+    ```
 1. Run the file by clicking the play button at the top right.
 1. You should see the sample data in the collection after refreshing the cluster on the MongoDB tab.
 
