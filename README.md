@@ -14,7 +14,9 @@ Sign up for a [MongoDB Atlas account](https://www.mongodb.com/cloud/atlas/regist
 
 ## Task 2: Create a MongoDB Atlas Cluster
 
-Create a free shared MongoDB Atlas Cluster.
+Create a free shared MongoDB Atlas Cluster if you don't already have one. Leave the default name of `Cluster0`.
+
+If you have an existing cluster, you can use it. Take note of your cluster name if it is anything other than `Cluster0`.
 
 ## Task 3: Enable the Atlas Data API
 
