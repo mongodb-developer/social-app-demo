@@ -11,12 +11,12 @@ export default withApiAuthRequired(async function handler(req, res) {
     },
   };
   const fetchBody = {
-    dataSource: "Cluster0",
-    database: "social_butterfly",
-    collection: "flutters",
+    dataSource: process.env.MONGODB_DATA_SOURCE,
+    database: process.env.MONGODB_DATABASE,
+    collection: process.env.MONGODB_COLLECTION,
   };
   const baseUrl =
-    `https://data.mongodb-api.com/app/${process.env.AUTH0_AUDIENCE}/endpoint/data1/beta/action`;
+    `https://data.mongodb-api.com/app/${process.env.AUTH0_AUDIENCE}/endpoint/data/beta/action`;
 
   try {
     switch (req.method) {

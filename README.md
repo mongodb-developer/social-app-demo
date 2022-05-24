@@ -8,6 +8,8 @@
 
 The goal of this lesson is to add functionality to like/unlike a flutter. We should be able to display how many total likes a flutter has, and if the current user has liked the flutter.
 
+> Be sure to switch to the `8-lesson` branch in your local environment.
+
 ## Task 1: Add `like` API endpoint
 
 Use the `pages/api/flutter/index.js` file as a starter to create `pages/api/flutter/like/index.js`.
