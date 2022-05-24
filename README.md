@@ -8,6 +8,8 @@
 
 The goal of this lesson is to enable search within MongoDB Atlas by creating a search index. We should be able to search for flutters by taking advantage of fuzzy searching.
 
+> Be sure to switch to the `9-lesson` branch in your local environment.
+
 ## Task 1: Create a search index
 
 1. From the Atlas dashboard, select **Database** from the left menu.
