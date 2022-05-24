@@ -24,7 +24,7 @@ In order to connect using the Atlas Data API, we must provide a `MONGODB_DATA_AP
 
 You will find a [`.env.local.example`](.env.local.example) file in the root of the project. Rename this file to `.env.local` and add your API key to the `MONGODB_DATA_API_KEY` variable.
 
-If your `MONGODB_DATA_SOURCE`, `MONGODB_DATABASE`, or `MONGODB_COLLECTION` are different from the default values, update them.
+If your `MONGODB_DATA_SOURCE` is not `Cluster0`, update it with your MongoDB Cluster name.
 
 ## Serverless functions
 
@@ -56,8 +56,8 @@ const fetchOptions = {
 };
 const fetchBody = {
   dataSource: process.env.MONGODB_DATA_SOURCE,
-  database: process.env.MONGODB_DATABASE,
-  collection: process.env.MONGODB_COLLECTION,
+  database: 'social_butterfly',
+  collection: 'flutters',
 };
 const baseUrl =
   "https://data.mongodb-api.com/app/<Data API App ID>/endpoint/data/beta/action";
