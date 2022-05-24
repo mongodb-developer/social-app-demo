@@ -23,8 +23,8 @@ export default withApiAuthRequired(async function handler(req, res) {
           },
           body: JSON.stringify({
             dataSource: process.env.MONGODB_DATA_SOURCE,
-            database: process.env.MONGODB_DATABASE,
-            collection: process.env.MONGODB_COLLECTION,
+            database: "social_butterfly",
+            collection: "flutters",
           }),
         });
 
@@ -40,8 +40,8 @@ export default withApiAuthRequired(async function handler(req, res) {
             },
             body: JSON.stringify({
               dataSource: process.env.MONGODB_DATA_SOURCE,
-              database: process.env.MONGODB_DATABASE,
-              collection: process.env.MONGODB_COLLECTION,
+              database: "social_butterfly",
+              collection: "flutters",
               filter: { _id: { $oid: readDataJson.document._id } },
               update: {
                 $set: {
@@ -73,7 +73,7 @@ export default withApiAuthRequired(async function handler(req, res) {
             jwtTokenString: accessToken,
           },
           body: JSON.stringify({
-            dataSource: "Cluster0",
+            dataSource: process.env.MONGODB_DATA_SOURCE,
             database: "social_butterfly",
             collection: "flutters",
             filter: { _id: { $oid: req.body._id } },

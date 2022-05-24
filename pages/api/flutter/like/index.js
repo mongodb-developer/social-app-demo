@@ -11,7 +11,7 @@ export default withApiAuthRequired(async function handler(req, res) {
     },
   };
   const fetchBody = {
-    dataSource: "Cluster0",
+    dataSource: process.env.MONGODB_DATA_SOURCE,
     database: "social_butterfly",
     collection: "flutters",
   };
