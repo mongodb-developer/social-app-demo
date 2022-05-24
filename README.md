@@ -10,6 +10,8 @@ The goal of this lesson is to test accessing the Data API. We'll use a Bash scri
 
 > Reference the [Data API Resource Docs](https://www.mongodb.com/docs/atlas/api/data-api-resources/) for hints.
 
+> Be sure to switch to the `4-lesson` branch in your local environment.
+
 ## Available Data API endpoints
 
 The endpoints available from the Atlas Data API are:
