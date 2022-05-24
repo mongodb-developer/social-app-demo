@@ -12,8 +12,8 @@ export default withApiAuthRequired(async function handler(req, res) {
   };
   const fetchBody = {
     dataSource: process.env.MONGODB_DATA_SOURCE,
-    database: process.env.MONGODB_DATABASE,
-    collection: process.env.MONGODB_COLLECTION,
+    database: "social_butterfly",
+    collection: "flutters",
   };
   const baseUrl =
   `https://data.mongodb-api.com/app/${process.env.AUTH0_AUDIENCE}/endpoint/data/beta/action`;
