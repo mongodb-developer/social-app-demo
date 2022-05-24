@@ -61,6 +61,7 @@ From the Atlas dashboard:
       });
     };
     ```
+    - Replace `Cluster0` with the name of your MongoDB cluster if it is different.
 1. Click **Save**.
 
 ## Task 4: Set rules for the `flutters` collection
