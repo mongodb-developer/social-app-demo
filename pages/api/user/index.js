@@ -29,6 +29,7 @@ export default withApiAuthRequired(async function handler(req, res) {
           }),
         });
         // END TEMP SOLUTION
+        await new Promise(resolve => setTimeout(resolve, 2000));
         const readData = await fetch(`${baseUrl}/findOne`, {
           method: "POST",
           headers: {
