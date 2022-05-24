@@ -24,6 +24,8 @@ In order to connect using the Atlas Data API, we must provide a `MONGODB_DATA_AP
 
 You will find a [`.env.local.example`](.env.local.example) file in the root of the project. Rename this file to `.env.local` and add your API key to the `MONGODB_DATA_API_KEY` variable.
 
+If your `MONGODB_DATA_SOURCE`, `MONGODB_DATABASE`, or `MONGODB_COLLECTION` are different from the default values, update them.
+
 ## Serverless functions
 
 Next.js has a native api route for handling serverless functions. Within `pages/api/flutter` you will find an [`index.js`](./pages/api/flutter/index.js) file. This file will contain all of the basic CRUD routes for our application to connect to our Atlas Data API.
@@ -33,6 +35,8 @@ Next.js has a native api route for handling serverless functions. Within `pages/
 > You can reference the [Atlas Data API docs](https://www.mongodb.com/docs/atlas/api/data-api-resources) for more information.
 
 In the `fetchOptions` variable, you will need to define the `method` and `headers` properties. The method should be set to `POST` and the headers should include a `Content-Type`, `Access-Control-Request-Headers`, and `api-key`.
+
+> You can access your environment variables using the `process.env` object.
 
 In the `fetchBody` variable, you will need to define the `dataSource`, which is your Cluster name, the `database` name, and the `collection` name.
 
@@ -51,9 +55,9 @@ const fetchOptions = {
   },
 };
 const fetchBody = {
-  dataSource: "Cluster0",
-  database: "social_butterfly",
-  collection: "flutters",
+  dataSource: process.env.MONGODB_DATA_SOURCE,
+  database: process.env.MONGODB_DATABASE,
+  collection: process.env.MONGODB_COLLECTION,
 };
 const baseUrl =
   "https://data.mongodb-api.com/app/<Data API App ID>/endpoint/data/beta/action";
@@ -63,9 +67,7 @@ const baseUrl =
 
 ## Task 4: Create the `find` endpoint
 
-Create within the `switch` statement a `GET` request case.
-
-Within the `GET` case, you should use `fetch` to make a request to the `find` Data API endpoint using the `baseUrl`, `fetchOptions`, and `fetchBody` variables. You will need to `stringify` the body of the request.
+Within the `GET` case of the `switch` statement, you should use `fetch` to make a request to the `find` Data API endpoint using the `baseUrl`, `fetchOptions`, and `fetchBody` variables. You will need to `stringify` the body of the request.
 
 > Hint: Since this is an `async` function, you can use the `await` keyword.
 
