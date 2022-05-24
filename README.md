@@ -45,6 +45,7 @@ Each request must include, at minimum, the following in body:
 ## Task 1: Add connection variables
 
 - Open the [findOne.sh](./findOne.sh) file and add your connection variables in items 1 and 2.
+- If your cluster name is not `Cluster0`, change the `dataSource` variable, item #5, to your cluster name.
 
 ## Task 2: Test the `findOne` endpoint
 
