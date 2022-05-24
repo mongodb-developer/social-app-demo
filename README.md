@@ -8,6 +8,8 @@
 
 The goal of this lesson is to load a sample data set into your MongoDB database.
 
+> Be sure to switch to the `3-lesson` branch in your local environment.
+
 ## Task 1: Load Sample Data
 
 Use either the MongoDB VS Code extension or MongoDB Compass to load sample data into your cluster.
