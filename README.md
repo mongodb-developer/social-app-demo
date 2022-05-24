@@ -8,6 +8,8 @@
 
 The goal of this lesson is to set up user authentication to limit access to endpoints and limit users ability to modify certain data. 
 
+> Be sure to switch to the `7-lesson` branch in your local environment.
+
 ## Task 1: Set up Auth0 application
 
 Sign up for an [Auth0 account](https://auth0.com/signup?place=header&type=button&text=sign%20up), if you don't already have one.
@@ -34,7 +36,7 @@ From the Atlas dashboard:
 1. Enable Provider.
 1. Set **Verification Method** to: Use a JWK URI
 1. Set **JWK URI**: `https://<account>.us.auth0.com/.well-known/jwks.json`
-    - Replace `<account>` with the beginning of your Auth0 domain.
+    - Replace `<account>` with the beginning of your Auth0 domain that you noted earlier.
 1. Click **Save**.
 
 ## Task 3: Add trigger to create users
