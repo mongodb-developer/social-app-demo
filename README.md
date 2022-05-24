@@ -20,7 +20,7 @@ From the Auth0 dashboard, create a new application.
 1. Name your application anything and select **Regular Web Applications**.
 1. Click **Create**.
 1. From the **Settings** tab, note the **Domain**, **Client ID**, and **Client Secret**. (You will need these later.)
-1. Add to **Allowed Callback URLs**: `http://localhost:3000/api/callback`
+1. Add to **Allowed Callback URLs**: `http://localhost:3000/api/auth/callback`
 1. Add to **Allowed Logout URLs**: `http://localhost:3000`
 
 From the Auth0 dashboard, select **APIs** under **Applications** from the left menu.
