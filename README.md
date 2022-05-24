@@ -8,6 +8,8 @@
 
 The goal of this lesson is to get your local application up and running. You should have basic CRUD functionality working by the end of this lesson.
 
+> Be sure to switch to the `5-lesson` branch in your local environment.
+
 ## Task 1: Install dependencies
 
 To install the dependencies for this lesson, run the following command in the terminal from the root of the project:
