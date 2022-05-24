@@ -23,9 +23,9 @@ export default withApiAuthRequired(async function handler(req, res) {
             jwtTokenString: accessToken,
           },
           body: JSON.stringify({
-            dataSource: "Cluster0",
-            database: "social_butterfly",
-            collection: "flutters",
+            dataSource: process.env.MONGODB_DATA_SOURCE,
+            database: process.env.MONGODB_DATABASE,
+            collection: process.env.MONGODB_COLLECTION,
           }),
         });
         // END TEMP SOLUTION
@@ -37,9 +37,9 @@ export default withApiAuthRequired(async function handler(req, res) {
             jwtTokenString: accessToken,
           },
           body: JSON.stringify({
-            dataSource: "Cluster0",
-            database: "social_butterfly",
-            collection: "users",
+            dataSource: process.env.MONGODB_DATA_SOURCE,
+            database: process.env.MONGODB_DATABASE,
+            collection: process.env.MONGODB_COLLECTION,
           }),
         });
 
@@ -54,9 +54,9 @@ export default withApiAuthRequired(async function handler(req, res) {
               jwtTokenString: accessToken,
             },
             body: JSON.stringify({
-              dataSource: "Cluster0",
-              database: "social_butterfly",
-              collection: "users",
+              dataSource: process.env.MONGODB_DATA_SOURCE,
+              database: process.env.MONGODB_DATABASE,
+              collection: process.env.MONGODB_COLLECTION,
               filter: { _id: { $oid: readDataJson.document._id } },
               update: {
                 $set: {
@@ -88,9 +88,9 @@ export default withApiAuthRequired(async function handler(req, res) {
             jwtTokenString: accessToken,
           },
           body: JSON.stringify({
-            dataSource: "Cluster0",
-            database: "social_butterfly",
-            collection: "flutters",
+            dataSource: process.env.MONGODB_DATA_SOURCE,
+            database: process.env.MONGODB_DATABASE,
+            collection: process.env.MONGODB_COLLECTION,
             filter: { _id: { $oid: req.body._id } },
             update: {
               $set: {
