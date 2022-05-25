@@ -5,7 +5,7 @@ export default async function handler(req, res) {
   };
   const fetchBody = {};
   const baseUrl =
-    "https://data.mongodb-api.com/app/<your-data-api-name>/endpoint/data/beta/action";
+    "<Your-Data-API-URL-Endpoint>/action";
 
   try {
     switch (req.method) {

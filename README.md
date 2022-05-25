@@ -40,7 +40,7 @@ In the `fetchOptions` variable, you will need to define the `method` and `header
 
 In the `fetchBody` variable, you will need to define the `dataSource`, which is your Cluster name, the `database` name, and the `collection` name.
 
-In the `baseUrl` variable, replace the `<Data API App ID>` with your Data API App ID. You can find this on the **Data API** page in your Atlas dashboard.
+In the `baseUrl` variable, replace the `<Your-Data-API-URL-Endpoint>` with your Data API URL Endpoint. If you didn't note it earlier, you can find this on the **Data API** page in your Atlas dashboard.
 
 <details>
 <summary>Show solution</summary>
