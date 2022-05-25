@@ -20,7 +20,7 @@ If you don't already have a [Vercel account](https://vercel.com/signup), create 
 1. Choose **Continue with GitHub**.
 1. Find the **social-app-demo** repository in the list and choose **Import**.
 1. Under **Environment Variables**, add all of your environment variables from your [`.env.local`](./.env.local) file.
-    - Change `AUTH0_BASE_URL` to your Vercel domain. (e.g. `https://social-app-demo.vercel.app`)
+    - Change `AUTH0_BASE_URL` to your Vercel domain. (Example: `https://socialbutterfly.vercel.app`)
 1. Click **Deploy**.
 1. Go back to the main dashboard and select your new project.
 1. From the **Settings** tab, click **Git**.
