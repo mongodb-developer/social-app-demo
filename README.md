@@ -101,4 +101,4 @@ case "GET":
 
 Great job! Let's move on to the [next lesson](https://github.com/mongodb-developer/social-app-demo/tree/10-lesson) ->
 
-> Be sure to switch to the `10-lesson` branch in your local environment.
+> Be sure to commit your branch changes and switch to the `10-lesson` branch in your local environment.
