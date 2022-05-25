@@ -28,7 +28,7 @@ If you have an existing cluster, you can use it. Take note of your cluster name 
 
 1. From the **Data API** page, select the **Create API key** button at the top right.
 1. Name your key anything you want, then select the **Generate API Key** button.
-1. Copy the API key and save it somewhere (you will not be able to see it again)
+1. Copy the API key and save it somewhere (you will not be able to see it again 🙈).
 
 > Technically, this is all we have to do in order to enable the Data API. The next 2 tasks will allow us to connect to our database and load sample data in our next lesson.
 
