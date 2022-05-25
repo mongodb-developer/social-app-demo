@@ -32,6 +32,8 @@ Each endpoint must use the `POST` method.
 
 The base URL for each endpoint is: `https://data.mongodb-api.com/app/<Data API App ID>/endpoint/data/beta`.
 
+> Note your Data API App ID separately from your URL Endpoint.
+
 Each request must include the following headers:
 - `Content-Type`: `application/json`
 - `Access-Control-Request-Headers`: `*`
