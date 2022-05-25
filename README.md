@@ -18,9 +18,13 @@ This workshop will show you how you can connect to MongoDB Atlas in your Jamstac
 In order to successfully complete the tasks in this workshop, you should have:
 
 - Familiarity with JavaScript
-- Accounts: MongoDB Atlas, GitHub, Vercel, Auth0. (All Free)
+- Accounts (All Free): 
+  - [MongoDB Atlas](https://www.mongodb.com/cloud/atlas/register2)
+  - [GitHub](https://github.com/signup)
+  - [Vercel](https://vercel.com/signup)
+  - [Auth0](https://auth0.com/signup)
 - Git and GitHub knowledge (fork, clone, branch, commit, etc.)
-- Node.js installed on your computer (12.2x / 14.x)
+- Node.js installed on your computer (14.x / 16.x)
 - Code Editor (VS Code recommended)
 
 That's it 🙌 *(no prior knowledge of MongoDB is required)*
