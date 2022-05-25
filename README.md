@@ -45,4 +45,4 @@ case "PUT":
 
 Great job! Let's move on to the [next lesson](https://github.com/mongodb-developer/social-app-demo/tree/9-lesson) ->
 
-> Be sure to switch to the `9-lesson` branch in your local environment.
+> Be sure to commit your branch changes and switch to the `9-lesson` branch in your local environment.
