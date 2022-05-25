@@ -52,7 +52,10 @@ Each request must include, at minimum, the following in body:
 ## Task 2: Test the `findOne` endpoint
 
 > If you are on MacOS or Linux, you'll need to add permissions to the `findOne.sh` file.
-> `chmod +x ./findOne.sh`
+> 
+> ```
+> chmod +x ./findOne.sh
+> ```
 
 - From the terminal, run `./findOne.sh`.
 
