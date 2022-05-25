@@ -12,7 +12,7 @@ export default async function handler(req, res) {
     database: "social_butterfly",
     collection: "flutters",
   };
-  const baseUrl = "<Your-Data-API-URL-Endpoint>/action";
+  const baseUrl = `${process.env.MONGODB_DATA_API_URL}/action`;
 
   try {
     switch (req.method) {
