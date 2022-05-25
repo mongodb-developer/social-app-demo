@@ -75,7 +75,7 @@ Save the file and run it again: `./findOne.sh`.
 
 You should get the specific document we searched for now.
 
-> Do not commit changes to your repo as this would commit your API key. Reset this branch before switching to the next one by running: `git reset --hard`.
+> Do not commit changes to your repo as this would commit your API key 😬. Reset this branch before switching to the next one by running: `git reset --hard`.
 
 ---
 
