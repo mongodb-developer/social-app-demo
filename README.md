@@ -102,7 +102,6 @@ We need to add environment variables in order to connect to Auth0.
     AUTH0_ISSUER_BASE_URL='https://<auth0 domain>'
     AUTH0_CLIENT_ID='<client_id>'
     AUTH0_CLIENT_SECRET='<client_secret>'
-    AUTH0_AUDIENCE=<data_api_id>
     AUTH0_SCOPE=openid email profile
     ```
     - Replace all placeholders with your Auth0 information.

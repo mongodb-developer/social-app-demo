@@ -9,13 +9,12 @@ export default withApiAuthRequired(async function handler(req, res) {
     const { accessToken } = await getAccessToken(req, res);
     const { user } = await getSession(req, res);
 
-    const baseUrl =
-    `https://data.mongodb-api.com/app/${process.env.AUTH0_AUDIENCE}/endpoint/data/beta/action`;
+    const baseUrl = `${process.env.MONGODB_DATA_API_URL}/action`;
 
     switch (req.method) {
       case "GET":
-        // TEMPORARY SOLUTION FOR DRY RUN
-        await fetch(`https://data.mongodb-api.com/app/${process.env.AUTH0_AUDIENCE}/endpoint/createUser`, {
+        // TEMPORARY SOLUTION FOR DRY RUN - REPLACE DATA API ID WITH YOURS
+        await fetch(`https://data.mongodb-api.com/app/<data-api-id>/endpoint/createUser`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
