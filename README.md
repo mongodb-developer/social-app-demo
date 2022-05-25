@@ -35,7 +35,7 @@ Since we'll be customizing user authentication in the following lesson, we'll ne
 1. Respond With Result: On
 1. Add a new function:
     - Function Name: `createUser`
-    - Leave defaut function.
+    - Leave default function.
 1. Create User Upon Authentication: On
 1. Save.
 
