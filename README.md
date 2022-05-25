@@ -35,8 +35,8 @@ From the Atlas dashboard:
 1. From **Authentication**, edit **Custom JWT Authentication**.
 1. Enable Provider.
 1. Set **Verification Method** to: Use a JWK URI
-1. Set **JWK URI**: `https://<account>.us.auth0.com/.well-known/jwks.json`
-    - Replace `<account>` with the beginning of your Auth0 domain that you noted earlier.
+1. Set **JWK URI**: `https://<auth0 domain>/.well-known/jwks.json`
+    - Replace `<auth0 domain>` with your Auth0 domain that you noted earlier.
 1. Click **Save**.
 
 ## Task 3: Add trigger to create users
@@ -70,9 +70,16 @@ From the Atlas Data API Realm App:
 1. Select **Rules** from the left menu.
 1. Select the `flutters` collection.
 1. Choose the template: Users can read all data, but only write their own data.
-1. Set the **Field Name For User ID** to `user.id`.
+1. Set the **Field Name For User ID** to `user`.
 1. Click **Configure Collection**.
-1. Click **Save**.
+1. Click the edit button (✏) on the **owner** role.
+1. Change `user` to `user.id`.
+
+    ```
+    { "user.id": "%%user.id" }
+    ```
+1. Click **Done Editing**.
+1. Click **Save** in the top right.
 
 ## Task 5: Set rules for the `user` collection
 
@@ -92,7 +99,7 @@ We need to add environment variables in order to connect to Auth0.
     ```env
     AUTH0_SECRET='use [openssl rand -hex 32] to generate a 32 bytes value'
     AUTH0_BASE_URL='http://localhost:3000'
-    AUTH0_ISSUER_BASE_URL='https://<account>.us.auth0.com'
+    AUTH0_ISSUER_BASE_URL='https://<auth0 domain>'
     AUTH0_CLIENT_ID='<client_id>'
     AUTH0_CLIENT_SECRET='<client_secret>'
     AUTH0_AUDIENCE=<data_api_id>
