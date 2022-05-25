@@ -12,8 +12,7 @@ export default async function handler(req, res) {
     database: "social_butterfly",
     collection: "flutters",
   };
-  const baseUrl =
-    "https://data.mongodb-api.com/app/<Data API App ID>/endpoint/data/beta/action";
+  const baseUrl = "<Your-Data-API-URL-Endpoint>/action";
 
   try {
     switch (req.method) {
