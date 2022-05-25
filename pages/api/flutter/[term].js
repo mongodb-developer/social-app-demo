@@ -15,7 +15,7 @@ export default withApiAuthRequired(async function handler(req, res) {
     database: "social_butterfly",
     collection: "flutters",
   };
-  const baseUrl = `https://data.mongodb-api.com/app/${process.env.AUTH0_AUDIENCE}/endpoint/data/beta/action`;
+  const baseUrl = `${process.env.MONGODB_DATA_API_URL}/action`;
 
   try {
     switch (req.method) {
