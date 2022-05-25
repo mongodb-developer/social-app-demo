@@ -22,7 +22,7 @@ npm install
 
 In order to connect using the Atlas Data API, we must provide a `MONGODB_DATA_API_KEY` environment variable with our API key.
 
-You will find a [`.env.local.example`](.env.local.example) file in the root of the project. Rename this file to `.env.local` and add your API key to the `MONGODB_DATA_API_KEY` variable.
+You will find a [`.env.local.example`](.env.local.example) file in the root of the project. Rename this file to `.env.local`, add your API key to the `MONGODB_DATA_API_KEY` variable, and add your Data API URL Endpoint to the `MONGODB_DATA_API_URL` variable.
 
 If your `MONGODB_DATA_SOURCE` is not `Cluster0`, update it with your MongoDB Cluster name.
 
@@ -40,7 +40,7 @@ In the `fetchOptions` variable, you will need to define the `method` and `header
 
 In the `fetchBody` variable, you will need to define the `dataSource`, which is your Cluster name, the `database` name, and the `collection` name.
 
-In the `baseUrl` variable, replace the `<Your-Data-API-URL-Endpoint>` with your Data API URL Endpoint. If you didn't note it earlier, you can find this on the **Data API** page in your Atlas dashboard.
+In the `baseUrl` variable, we'll use our Data API URL Endpoint environment variable.
 
 <details>
 <summary>Show solution</summary>
@@ -59,10 +59,8 @@ const fetchBody = {
   database: 'social_butterfly',
   collection: 'flutters',
 };
-const baseUrl =
-  "https://data.mongodb-api.com/app/<Data API App ID>/endpoint/data/beta/action";
+const baseUrl = `${process.env.MONGODB_DATA_API_URL}/action`;
 ```
-
 </details>
 
 ## Task 4: Create the `find` endpoint
@@ -241,4 +239,4 @@ case "DELETE":
 
 Great job! Let's move on to the [next lesson](https://github.com/mongodb-developer/social-app-demo/tree/6-lesson) ->
 
-> Be sure to switch to the `6-lesson` branch in your local environment.
+> Be sure to commit your branch changes and switch to the `6-lesson` branch in your local environment.

@@ -4,8 +4,7 @@ export default async function handler(req, res) {
     headers: {},
   };
   const fetchBody = {};
-  const baseUrl =
-    "<Your-Data-API-URL-Endpoint>/action";
+  const baseUrl = `${process.env.MONGODB_DATA_API_URL}/action`;
 
   try {
     switch (req.method) {
