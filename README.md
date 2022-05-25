@@ -57,7 +57,7 @@ Each request must include, at minimum, the following in body:
 > chmod +x ./findOne.sh
 > ```
 
-- From the terminal, run `./findOne.sh`.
+From the terminal, run `./findOne.sh`.
 
 You should recieve the first document in the collection.
 
