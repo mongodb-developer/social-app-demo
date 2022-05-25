@@ -36,4 +36,4 @@ curl -XPOST -H "api-key: $apikey" -H 'Access-Control-Request-Headers: *' -H 'Con
   "database": "'"$database"'", 
   "collection": "'"$collection"'",
   "filter": '"$filter"'
-}' $baseurl$endpoint | json
+}' $baseurl$endpoint | npx json

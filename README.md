@@ -42,14 +42,15 @@ Each request must include, at minimum, the following in body:
 - `database`: `<database name>`
 - `collection`: `<collection name>`
 
-> The following tasks are dependent on the `json` npm package. If you don't have it, you can install it with `npm install -g json`.
-
 ## Task 1: Add connection variables
 
 - Open the [findOne.sh](./findOne.sh) file and add your connection variables in items 1 and 2.
 - If your cluster name is not `Cluster0`, change the `dataSource` variable, item #5, to your cluster name.
 
 ## Task 2: Test the `findOne` endpoint
+
+> If you are on MacOS or Linux, you'll need to add permissions to the `findOne.sh` file.
+> `chmod +x ./findOne.sh`
 
 - From the terminal, run `./findOne.sh`.
 
