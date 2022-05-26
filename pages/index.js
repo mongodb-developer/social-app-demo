@@ -29,7 +29,7 @@ export default function Home() {
 
   return (
     <AppShell
-      header={<HeaderSearch setFlutters={setFlutters} />}
+      header={<HeaderSearch />}
       navbar={<Navbar page={page} setPage={setPage} />}
       styles={(theme) => ({
         main: {
