@@ -14,7 +14,7 @@ export default withApiAuthRequired(async function handler(req, res) {
     switch (req.method) {
       case "GET":
         // TEMPORARY SOLUTION FOR DRY RUN - REPLACE DATA API ID WITH YOURS
-        await fetch(`https://data.mongodb-api.com/app/data-ubrmv/endpoint/createUser`, {
+        await fetch(`https://data.mongodb-api.com/app/${process.env.AUTH0_AUDIENCE}/endpoint/createUser`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
