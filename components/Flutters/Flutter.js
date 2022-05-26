@@ -13,13 +13,23 @@ import {
   Button,
 } from "@mantine/core";
 import { useForm } from "@mantine/form";
-import { Edit, Trash, Heart, Share, BrandTwitter } from "tabler-icons-react";
+import { showNotification } from "@mantine/notifications";
+import {
+  Edit,
+  Trash,
+  Heart,
+  Share,
+  BrandTwitter,
+  Check,
+} from "tabler-icons-react";
 
-const tweetUrl = "https://twitter.com/intent/tweet?url=https%3A%2F%2Fsocial-mongodb-demo.vercel.app%2F&text=Check%20out%20this%20cool%20social%20media%20Jamstack%20app%20I%20made%20using%20the%20@MongoDB%20Data%20API%2C%20@Vercel%20serverless%20functions%2C%20@GitHub%2C%20and%20@Auth0%20for%20user%20authentication%21%21%21";
+const tweetUrl =
+  "https://twitter.com/intent/tweet?url=https%3A%2F%2Fsocialbutterfly.vercel.app%2F&text=Check%20out%20this%20cool%20social%20media%20Jamstack%20app%20I%20made%20using%20the%20@MongoDB%20Data%20API%2C%20@Vercel%20serverless%20functions%2C%20@GitHub%2C%20and%20@Auth0%20for%20user%20authentication%21%21%21";
 
 const useStyles = createStyles((theme) => ({
   flutter: {
     padding: `${theme.spacing.lg}px ${theme.spacing.xl}px`,
+    marginBottom: theme.spacing.sm,
   },
 
   body: {
@@ -54,6 +64,7 @@ const Flutter = ({ flutter, setFlutters }) => {
   const [deleted, setDeleted] = useState(false);
   const [updatingLike, setUpdatingLike] = useState(false);
   const [likesState, setLikesState] = useState(likes);
+  const [inputDisabled, setInputDisabled] = useState(false);
   const { classes, theme } = useStyles();
 
   const form = useForm({
@@ -68,6 +79,7 @@ const Flutter = ({ flutter, setFlutters }) => {
   };
 
   const onUpdateFlutter = async (value) => {
+    setInputDisabled(true);
     const response = await fetch("/api/flutter", {
       method: "PUT",
       headers: {
@@ -97,14 +109,16 @@ const Flutter = ({ flutter, setFlutters }) => {
     );
 
     form.reset();
+    setInputDisabled(false);
     setModalOpened(false);
+    showSuccess("Your flutter has been updated");
   };
 
   const likeFlutter = async () => {
     setUpdatingLike(true);
     let action = likesState.includes(user.id) ? "$pull" : "$addToSet";
 
-    const response = await fetch("/api/flutter/like", {
+    await fetch("/api/flutter/like", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -138,6 +152,21 @@ const Flutter = ({ flutter, setFlutters }) => {
     const responseJson = await response.json();
     setDeleted(true);
     console.log(responseJson);
+    showSuccess("Your flutter has been deleted");
+  };
+
+  const showSuccess = (message) => {
+    showNotification({
+      title: "Success",
+      message,
+      icon: <Check size={18} />,
+      autoClose: 5000,
+      styles: (theme) => ({
+        root: {
+          borderColor: theme.colors.green[6],
+        },
+      }),
+    });
   };
 
   return (
@@ -156,14 +185,12 @@ const Flutter = ({ flutter, setFlutters }) => {
                 placeholder="Edit your flutter."
                 variant="filled"
                 className={classes.media}
-                value={form.values.editFlutter}
-                onChange={(event) =>
-                  form.setFieldValue(event.currentTarget.value)
-                }
                 {...form.getInputProps("editFlutter")}
               />
               <Group position={"right"} mt={20}>
-                <Button type="submit">Update</Button>
+                <Button type="submit" disabled={inputDisabled}>
+                  Update
+                </Button>
               </Group>
             </form>
           </Modal>
@@ -188,10 +215,16 @@ const Flutter = ({ flutter, setFlutters }) => {
               <Group position="apart">
                 <Text size="xs" color="dimmed">
                   {likesState ? likesState.length : 0}
-                  {` ${likesState.length === 1 ? "person" : "people"} liked this`}
+                  {` ${
+                    likesState.length === 1 ? "person" : "people"
+                  } liked this`}
                 </Text>
                 <Group spacing={0}>
-                  <ActionIcon onClick={() => likeFlutter()} size="lg" loading={updatingLike}>
+                  <ActionIcon
+                    onClick={() => likeFlutter()}
+                    size="lg"
+                    loading={updatingLike}
+                  >
                     <Heart
                       size={18}
                       color={theme.colors.red[6]}
@@ -259,6 +292,6 @@ const Flutter = ({ flutter, setFlutters }) => {
       )}
     </>
   );
-}
+};
 
 export default Flutter;
