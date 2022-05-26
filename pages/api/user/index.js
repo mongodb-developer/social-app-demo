@@ -9,11 +9,26 @@ export default withApiAuthRequired(async function handler(req, res) {
     const { accessToken } = await getAccessToken(req, res);
     const { user } = await getSession(req, res);
 
-    const baseUrl =
-      "https://data.mongodb-api.com/app/data-vbhdy/endpoint/data1/beta/action";
+    const baseUrl = `${process.env.MONGODB_DATA_API_URL}/action`;
 
     switch (req.method) {
       case "GET":
+        // TEMPORARY SOLUTION FOR DRY RUN - REPLACE DATA API ID WITH YOURS
+        await fetch(`https://data.mongodb-api.com/app/data-ubrmv/endpoint/createUser`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Request-Headers": "*",
+            jwtTokenString: accessToken,
+          },
+          body: JSON.stringify({
+            dataSource: process.env.MONGODB_DATA_SOURCE,
+            database: "social_butterfly",
+            collection: "flutters",
+          }),
+        });
+        // END TEMP SOLUTION
+        await new Promise(resolve => setTimeout(resolve, 2000));
         const readData = await fetch(`${baseUrl}/findOne`, {
           method: "POST",
           headers: {
@@ -22,13 +37,14 @@ export default withApiAuthRequired(async function handler(req, res) {
             jwtTokenString: accessToken,
           },
           body: JSON.stringify({
-            dataSource: "Cluster0",
+            dataSource: process.env.MONGODB_DATA_SOURCE,
             database: "social_butterfly",
             collection: "users",
           }),
         });
 
         const readDataJson = await readData.json();
+        // console.log(readDataJson)
 
         if (!readDataJson.document.email) {
           await fetch(`${baseUrl}/updateOne`, {
@@ -39,7 +55,7 @@ export default withApiAuthRequired(async function handler(req, res) {
               jwtTokenString: accessToken,
             },
             body: JSON.stringify({
-              dataSource: "Cluster0",
+              dataSource: process.env.MONGODB_DATA_SOURCE,
               database: "social_butterfly",
               collection: "users",
               filter: { _id: { $oid: readDataJson.document._id } },
@@ -73,18 +89,18 @@ export default withApiAuthRequired(async function handler(req, res) {
             jwtTokenString: accessToken,
           },
           body: JSON.stringify({
-            dataSource: "Cluster0",
+            dataSource: process.env.MONGODB_DATA_SOURCE,
             database: "social_butterfly",
-            collection: "flutters",
+            collection: "users",
             filter: { _id: { $oid: req.body._id } },
             update: {
               $set: {
-                ...req.body,
+                nickname: req.body.nickname,
+                picture: req.body.picture,
               },
             },
           }),
         });
-
         const updateDataJson = await updateData.json();
         res.status(200).json(updateDataJson);
         break;

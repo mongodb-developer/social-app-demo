@@ -69,18 +69,17 @@ const useStyles = createStyles((theme, _params, getRef) => {
   };
 });
 
-const Navbar = () => {
+const Navbar = ({page, setPage}) => {
   const { classes, cx } = useStyles();
-  const [active, setActive] = useState('Home');
 
   const links = linkData.map((item) => (
     <a
-      className={cx(classes.link, { [classes.linkActive]: item.label === active })}
+      className={cx(classes.link, { [classes.linkActive]: item.label === page })}
       href={item.link}
       key={item.label}
       onClick={(event) => {
         event.preventDefault();
-        setActive(item.label);
+        setPage(item.label);
       }}
     >
       <item.icon className={classes.linkIcon} />

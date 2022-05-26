@@ -11,12 +11,11 @@ export default withApiAuthRequired(async function handler(req, res) {
     },
   };
   const fetchBody = {
-    dataSource: "Cluster0",
+    dataSource: process.env.MONGODB_DATA_SOURCE,
     database: "social_butterfly",
     collection: "flutters",
   };
-  const baseUrl =
-    "https://data.mongodb-api.com/app/data-vbhdy/endpoint/data1/beta/action";
+  const baseUrl = `${process.env.MONGODB_DATA_API_URL}/action`;
 
   try {
     switch (req.method) {
@@ -34,7 +33,7 @@ export default withApiAuthRequired(async function handler(req, res) {
         const updateDataJson = await updateData.json();
         res.status(200).json(updateDataJson);
         break;
-      default: //Method Not Allowed
+      default:
         res.status(405).end();
         break;
     }

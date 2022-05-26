@@ -3,6 +3,7 @@ import Head from "next/head";
 import { UserProvider } from "@auth0/nextjs-auth0";
 import { UserProvider as AtlasUserProvider } from "../context/UserContext";
 import { MantineProvider, ColorSchemeProvider } from "@mantine/core";
+import { NotificationsProvider } from '@mantine/notifications';
 
 export default function App(props) {
   const { Component, pageProps } = props;
@@ -48,7 +49,9 @@ export default function App(props) {
                 colorScheme,
               }}
             >
-              <Component {...pageProps} />
+              <NotificationsProvider>
+                <Component {...pageProps} />
+              </NotificationsProvider>
             </MantineProvider>
           </ColorSchemeProvider>
         </AtlasUserProvider>

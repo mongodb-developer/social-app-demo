@@ -58,7 +58,7 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-const HeaderSearch = ({ setFlutters, setIsLoading }) => {
+const HeaderSearch = ({ setFlutters }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const { classes } = useStyles();
 
@@ -66,7 +66,7 @@ const HeaderSearch = ({ setFlutters, setIsLoading }) => {
     const term = e.currentTarget.value;
     setSearchTerm(e.currentTarget.value);
 
-    if(term.length > 2) {
+    if(term.length > 2 || term.length === 0) {
       const getFlutters = await fetch(`/api/flutter/${term}`)
       const getFluttersJson = await getFlutters.json();
       setFlutters(getFluttersJson);
