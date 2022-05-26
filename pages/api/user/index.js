@@ -14,39 +14,9 @@ export default withApiAuthRequired(async function handler(req, res) {
     switch (req.method) {
       case "GET":
         // TEMPORARY SOLUTION FOR DRY RUN - REPLACE DATA API ID WITH YOURS
-        await fetch(`https://data.mongodb-api.com/app/<data-api-id>/endpoint/createUser`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "Access-Control-Request-Headers": "*",
-            jwtTokenString: accessToken,
-          },
-          body: JSON.stringify({
-            dataSource: process.env.MONGODB_DATA_SOURCE,
-            database: "social_butterfly",
-            collection: "flutters",
-          }),
-        });
-        // END TEMP SOLUTION
-        await new Promise(resolve => setTimeout(resolve, 2000));
-        const readData = await fetch(`${baseUrl}/findOne`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "Access-Control-Request-Headers": "*",
-            jwtTokenString: accessToken,
-          },
-          body: JSON.stringify({
-            dataSource: process.env.MONGODB_DATA_SOURCE,
-            database: "social_butterfly",
-            collection: "flutters",
-          }),
-        });
-
-        const readDataJson = await readData.json();
-
-        if (!readDataJson.document?.email) {
-          await fetch(`${baseUrl}/updateOne`, {
+        await fetch(
+          `https://data.mongodb-api.com/app/${process.env.AUTH0_AUDIENCE}/endpoint/createUser`,
+          {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -57,6 +27,40 @@ export default withApiAuthRequired(async function handler(req, res) {
               dataSource: process.env.MONGODB_DATA_SOURCE,
               database: "social_butterfly",
               collection: "flutters",
+            }),
+          }
+        );
+        // END TEMP SOLUTION
+        await new Promise((resolve) => setTimeout(resolve, 2000));
+        const readData = await fetch(`${baseUrl}/findOne`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Request-Headers": "*",
+            jwtTokenString: accessToken,
+          },
+          body: JSON.stringify({
+            dataSource: process.env.MONGODB_DATA_SOURCE,
+            database: "social_butterfly",
+            collection: "users",
+          }),
+        });
+
+        const readDataJson = await readData.json();
+        // console.log(readDataJson)
+
+        if (!readDataJson.document.email) {
+          await fetch(`${baseUrl}/updateOne`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "Access-Control-Request-Headers": "*",
+              jwtTokenString: accessToken,
+            },
+            body: JSON.stringify({
+              dataSource: process.env.MONGODB_DATA_SOURCE,
+              database: "social_butterfly",
+              collection: "users",
               filter: { _id: { $oid: readDataJson.document._id } },
               update: {
                 $set: {
@@ -74,7 +78,7 @@ export default withApiAuthRequired(async function handler(req, res) {
             name: user.name,
             picture: user.picture,
             nickname: user.nickname,
-          }
+          };
         }
 
         res.status(200).json(readDataJson.document);
@@ -90,16 +94,16 @@ export default withApiAuthRequired(async function handler(req, res) {
           body: JSON.stringify({
             dataSource: process.env.MONGODB_DATA_SOURCE,
             database: "social_butterfly",
-            collection: "flutters",
+            collection: "users",
             filter: { _id: { $oid: req.body._id } },
             update: {
               $set: {
-                ...req.body,
+                nickname: req.body.nickname,
+                picture: req.body.picture,
               },
             },
           }),
         });
-
         const updateDataJson = await updateData.json();
         res.status(200).json(updateDataJson);
         break;
