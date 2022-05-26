@@ -1,10 +1,5 @@
 import { useState } from "react";
-import {
-  createStyles,
-  Header,
-  TextInput,
-  Group,
-} from "@mantine/core";
+import { createStyles, Header, TextInput, Group } from "@mantine/core";
 import ColorToggle from "../ColorToggle/ColorToggle";
 import { Search } from "tabler-icons-react";
 import { Logo } from "./Logo";
@@ -66,8 +61,8 @@ const HeaderSearch = ({ setFlutters }) => {
     const term = e.currentTarget.value;
     setSearchTerm(e.currentTarget.value);
 
-    if(term.length > 2) {
-      const getFlutters = await fetch(`/api/flutter/${term}`)
+    if (term.length > 2 || term.length === 0) {
+      const getFlutters = await fetch(`/api/flutter/${term}`);
       const getFluttersJson = await getFlutters.json();
       setFlutters(getFluttersJson);
     }
@@ -90,6 +85,6 @@ const HeaderSearch = ({ setFlutters }) => {
       </div>
     </Header>
   );
-}
+};
 
 export default HeaderSearch;

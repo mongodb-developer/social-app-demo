@@ -6,22 +6,24 @@ import Navbar from "../components/Navbar/Navbar";
 import Flutters from "../components/Flutters/Flutters";
 import CreateFlutter from "../components/Flutters/CreateFlutter";
 import HeaderSearch from "../components/Header/HeaderSearch";
+import Profile from "../components/Profile/Profile";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
   const [flutters, setFlutters] = useState([]);
+  const [page, setPage] = useState("Home");
   const setUser = useSetUser();
 
   useEffect(() => {
     (async () => {
-      const getUser = await fetch("/api/user")
+      const getUser = await fetch("/api/user");
       const getUserJson = await getUser.json();
       setUser(getUserJson);
 
-      const getFlutters = await fetch("/api/flutter")
+      const getFlutters = await fetch("/api/flutter");
       const getFluttersJson = await getFlutters.json();
       setFlutters(getFluttersJson);
-      
+
       setIsLoading(false);
     })();
   }, []);
@@ -29,7 +31,7 @@ export default function Home() {
   return (
     <AppShell
       header={<HeaderSearch setFlutters={setFlutters} />}
-      navbar={<Navbar />}
+      navbar={<Navbar page={page} setPage={setPage} />}
       styles={(theme) => ({
         main: {
           backgroundColor:
@@ -40,8 +42,13 @@ export default function Home() {
       })}
     >
       <LoadingOverlay visible={isLoading} />
-      <CreateFlutter setFlutters={setFlutters} />
-      <Flutters flutters={flutters} setFlutters={setFlutters} />
+      {page === "Home" && (
+        <>
+          <CreateFlutter setFlutters={setFlutters} />
+          <Flutters flutters={flutters} setFlutters={setFlutters} />
+        </>
+      )}
+      {page === "Profile" && <Profile />}
     </AppShell>
   );
 }
