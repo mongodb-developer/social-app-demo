@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Navbar as NavbarMT, createStyles } from "@mantine/core";
 import { Home, User } from "tabler-icons-react";
 import UserButton from "../UserButton/UserButton";
