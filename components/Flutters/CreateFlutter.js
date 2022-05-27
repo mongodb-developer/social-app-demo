@@ -1,5 +1,8 @@
+import { useState } from "react";
 import { createStyles, Avatar, Group, Textarea, Button } from "@mantine/core";
 import { useForm } from "@mantine/form";
+import { showNotification } from '@mantine/notifications';
+import { Check } from 'tabler-icons-react';
 
 const demoUser = {
   id: "6276d0c602ce122f7b8b11ec",
@@ -32,8 +35,10 @@ const CreateFlutter = ({ setFlutters }) => {
       flutter: "",
     },
   });
+  const [inputDisabled, setInputDisabled] = useState(false);
 
   const onSubmitFlutter = async (value) => {
+    setInputDisabled(true);
     const flutter = {
       postedAt: Date.now(),
       body: value.flutter,
@@ -63,6 +68,22 @@ const CreateFlutter = ({ setFlutters }) => {
       ...flutters,
     ]);
     form.reset();
+    setInputDisabled(false);
+    showSuccess();
+  };
+
+  const showSuccess = () => {
+    showNotification({
+      title: "Success",
+      message: "Your flutter has been sent",
+      icon: <Check size={18} />,
+      autoClose: 5000,
+      styles: (theme) => ({
+        root: {
+          borderColor: theme.colors.green[6],
+        }
+      }),
+    });
   };
 
   return (
@@ -77,7 +98,7 @@ const CreateFlutter = ({ setFlutters }) => {
             className={classes.media}
             {...form.getInputProps("flutter")}
           />
-          <Button type="submit">Send</Button>
+          <Button type="submit" disabled={inputDisabled}>Send</Button>
         </Group>
       </form>
     </Group>
