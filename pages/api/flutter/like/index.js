@@ -24,10 +24,12 @@ export default withApiAuthRequired(async function handler(req, res) {
           ...fetchOptions,
           body: JSON.stringify({
             ...fetchBody,
-            filter: { _id: { "$oid": req.body._id } },
-            update: { [req.body.action]: {
-              likes: req.body.userId,
-            } },
+            filter: { _id: { $oid: req.body._id } },
+            update: {
+              [req.body.action]: {
+                likes: req.body.userId,
+              },
+            },
           }),
         });
         const updateDataJson = await updateData.json();
