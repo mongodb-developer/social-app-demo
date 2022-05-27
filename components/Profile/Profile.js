@@ -1,9 +1,9 @@
-import { useState  } from 'react';
+import { useState } from "react";
 import { useUser, useSetUser } from "../../context/UserContext";
 import { Group, Button, TextInput } from "@mantine/core";
-import { showNotification } from '@mantine/notifications';
+import { showNotification } from "@mantine/notifications";
 import { useForm } from "@mantine/form";
-import { Check } from 'tabler-icons-react';
+import { Check } from "tabler-icons-react";
 
 const Profile = () => {
   const user = useUser();
@@ -51,7 +51,7 @@ const Profile = () => {
       styles: (theme) => ({
         root: {
           borderColor: theme.colors.green[6],
-        }
+        },
       }),
     });
   };
@@ -59,7 +59,10 @@ const Profile = () => {
   return (
     <>
       <h1>Profile</h1>
-      <form onSubmit={form.onSubmit((value) => onUpdateProfile(value))} onChange={() => setDirty(true)}>
+      <form
+        onSubmit={form.onSubmit((value) => onUpdateProfile(value))}
+        onChange={() => setDirty(true)}
+      >
         <TextInput
           required
           label="Display Name"
@@ -75,10 +78,10 @@ const Profile = () => {
           {...form.getInputProps("picture")}
         />
         <Group position={"apart"} mt={20}>
-          {dirty ? (
-            <Button type="submit">Save</Button>
-          ) : <div></div>}
-          <Button component="a" href='/api/auth/logout' color="red">Logout</Button>
+          {dirty ? <Button type="submit">Save</Button> : <div></div>}
+          <Button component="a" href="/api/auth/logout" color="red">
+            Logout
+          </Button>
         </Group>
       </form>
     </>
