@@ -11,7 +11,8 @@ import {
   Textarea,
   Button,
 } from "@mantine/core";
-import { Edit, Trash, Heart, Share, BrandTwitter } from "tabler-icons-react";
+import { Edit, Trash, Heart, Share, BrandTwitter, Check } from "tabler-icons-react";
+import { showNotification } from '@mantine/notifications';
 import { useForm } from "@mantine/form";
 
 const tweetUrl = "https://twitter.com/intent/tweet?url=https%3A%2F%2Fsocialbutterfly.vercel.app%2F&text=Check%20out%20this%20cool%20social%20media%20Jamstack%20app%20I%20made%20using%20the%20@MongoDB%20Data%20API%2C%20@Vercel%20serverless%20functions%2C%20@GitHub%2C%20and%20@Auth0%20for%20user%20authentication%21%21%21";
@@ -50,6 +51,7 @@ const Flutter = ({ flutter, setFlutters }) => {
   const { _id, postedAt, body, user: flutterUser } = flutter;
   const [modalOpened, setModalOpened] = useState(false);
   const [deleted, setDeleted] = useState(false);
+  const [inputDisabled, setInputDisabled] = useState(false);
   const { classes, theme } = useStyles();
 
   const form = useForm({
@@ -64,6 +66,7 @@ const Flutter = ({ flutter, setFlutters }) => {
   };
 
   const onUpdateFlutter = async (value) => {
+    setInputDisabled(true);
     const response = await fetch("/api/flutter", {
       method: "PUT",
       headers: {
@@ -93,7 +96,9 @@ const Flutter = ({ flutter, setFlutters }) => {
     );
 
     form.reset();
+    setInputDisabled(false);
     setModalOpened(false);
+    showSuccess('Your flutter has been updated');
   };
 
   const deleteFlutter = async () => {
@@ -109,6 +114,21 @@ const Flutter = ({ flutter, setFlutters }) => {
     const responseJson = await response.json();
     console.log(responseJson); 
     setDeleted(true);
+    showSuccess('Your flutter has been deleted');
+  };
+
+  const showSuccess = (message) => {
+    showNotification({
+      title: "Success",
+      message,
+      icon: <Check size={18} />,
+      autoClose: 5000,
+      styles: (theme) => ({
+        root: {
+          borderColor: theme.colors.green[6],
+        }
+      }),
+    });
   };
 
   return (
@@ -127,14 +147,10 @@ const Flutter = ({ flutter, setFlutters }) => {
                 placeholder="Edit your flutter."
                 variant="filled"
                 className={classes.media}
-                value={form.values.editFlutter}
-                onChange={(event) =>
-                  form.setFieldValue(event.currentTarget.value)
-                }
                 {...form.getInputProps("editFlutter")}
               />
               <Group position={"right"} mt={20}>
-                <Button type="submit">Update</Button>
+                <Button type="submit" disabled={inputDisabled}>Update</Button>
               </Group>
             </form>
           </Modal>
