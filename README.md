@@ -31,7 +31,7 @@ That's it 🙌 *(no prior knowledge of MongoDB is required)*
 
 ## Slides
 
-- 
+- [Workshop Slides](https://docs.google.com/presentation/d/1UuJl2kyuUfkDJah6WqSGa59ZTKtLK2SN-mMgUtAGqR0/edit?usp=sharing)
 
 ## Hands-on lesson
 
