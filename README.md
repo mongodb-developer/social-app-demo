@@ -22,10 +22,12 @@ From the Auth0 dashboard, create a new application.
 1. From the **Settings** tab, note the **Domain**, **Client ID**, and **Client Secret**. (You will need these later.)
 1. Add to **Allowed Callback URLs**: `http://localhost:3000/api/auth/callback`
 1. Add to **Allowed Logout URLs**: `http://localhost:3000`
+1. Click **Save Changes**.
 
 From the Auth0 dashboard, select **APIs** under **Applications** from the left menu.
 1. Click **Create API**
 1. Name it anything and set the identifier as your **Data API ID**.
+1. Click **Create**.
 
 ## Task 2: Set up Atlas authentication settings
 
@@ -45,11 +47,11 @@ From the Atlas dashboard:
 1. Slect **Add a Trigger**.
 1. Trigger Type: Authentication
 1. Name: `AddUserToDatabase`
-1. Enabled: On
-1. Action Type: Create
-1. Provider: Custom JWT Authentication
-1. Event Type: Function
-1. Function: New Function
+1. Enabled: **On**
+1. Action Type: **Create**
+1. Provider: **Custom JWT Authentication**
+1. Event Type: **Function**
+1. Function: **New Function**
     - Name: `addUserToDatabase`
     ```js
     exports = function(authEvent) {
@@ -102,6 +104,7 @@ We need to add environment variables in order to connect to Auth0.
     AUTH0_ISSUER_BASE_URL='https://<auth0 domain>'
     AUTH0_CLIENT_ID='<client_id>'
     AUTH0_CLIENT_SECRET='<client_secret>'
+    AUTH0_AUDIENCE='<Data_API_App_ID>'
     AUTH0_SCOPE=openid email profile
     ```
     - Replace all placeholders with your Auth0 information.
@@ -111,6 +114,8 @@ We need to add environment variables in order to connect to Auth0.
 
 1. `pages/api/auth/[...auth0].js`
     - This file handles all of the authentication routes for the Auth0 API. (login, logout, etc.)
+1. `pages/index.js`
+    - We are using the Auth0 method `withPageAuthRequired` to protect our main application page, requiring the user to be logged in.
 1. `pages/api/flutter/index.js`
     - We are now using Auth0 to protect this endpoint, and we are getting the user's access token to pass to the Data API.
     - Instead of `api-key`, we are now using the `jwtTokenString` for authentication to the Data API.
