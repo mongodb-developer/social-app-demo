@@ -12,9 +12,9 @@ The goal of this lesson is to add functionality to like/unlike a flutter. We sho
 
 ## Task 1: Add `like` API endpoint
 
-Use the `pages/api/flutter/index.js` file as a starter to create `pages/api/flutter/like/index.js`.
+You will find a new starter file for the **like** endpoint: `pages/api/flutter/like/index.js`.
 
-This route needs to be able to only update the likes field of a flutter.
+This route should only update the likes field of a flutter.
 
 The request body will contain the flutter `_id`, `userId`, and `action`.
 
@@ -40,6 +40,26 @@ case "PUT":
   break;
 ```
 </details>
+
+## Task 2: Update App Services Rule
+
+1. From your Data API App Services app, navigate to the **Rules** tab.
+1. Select the `flutters` collection.
+1. On the **non-owner** role, check then uncheck the `Write` checkbox. (Yes, there's a small bug here 😅)
+1. Click the **+ Add Field** button.
+1. Type `likes` and click the **Check** button.
+1. Select the **Write** checkbox for the `likes` field only.
+1. Click the **Save** button.
+
+## Task 3: Test 
+
+Test your application. If it is not already running, from the terminal, run the following command:
+
+```bash
+npm run dev
+```
+
+You can now navigate to `http://localhost:3000` and test liking and unliking flutters. You should be able to like/unlike any flutter, including those you have not created.
 
 ---
 
