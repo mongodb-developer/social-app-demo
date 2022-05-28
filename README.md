@@ -101,7 +101,7 @@ case "GET":
 ```
 </details>
 
-## Task 4: Create the `insertOne` endpoint
+## Task 5: Create the `insertOne` endpoint
 
 Create within the `switch` statement a `POST` request case.
 
@@ -144,7 +144,7 @@ case "POST":
 ```
 </details>
 
-## Task 5: Create the `updateOne` endpoint
+## Task 6: Create the `updateOne` endpoint
 
 Create within the `switch` statement a `PUT` request case.
 
@@ -193,7 +193,7 @@ case "PUT":
 ```
 </details>
 
-## Task 6: Create the `deleteOne` endpoint
+## Task 7: Create the `deleteOne` endpoint
 
 Create within the `switch` statement a `DELETE` request case.
 
