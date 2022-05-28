@@ -25,7 +25,7 @@ Install the [MongoDB VS Code extension](https://marketplace.visualstudio.com/ite
     ```js
     db.flutters.insertMany(...paste data.json here...)
     ```
-1. Run the file by clicking the play button at the top right.
+1. Run the file by clicking the play button at the top right, and then confirm by slecting **Yes**.
 1. You should see the sample data in the collection after refreshing the cluster on the MongoDB tab.
 
 ### Option 2: MongoDB Compass
