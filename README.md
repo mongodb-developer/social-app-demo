@@ -21,7 +21,7 @@ If you have an existing cluster, you can use it. Take note of your cluster name 
 ## Task 3: Enable the Atlas Data API
 
 1. From the Atlas dashboard, select **Data API** from the left menu.
-1. Enable the Data API for your cluster.
+1. Enable the Data API by selecting your cluster and adding **Read and Write** access to it.
 1. Take note of your **URL Endpoint**.
 
 ## Task 4: Create a Data API Key
