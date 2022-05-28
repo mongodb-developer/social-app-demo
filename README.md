@@ -18,6 +18,7 @@ The goal of this lesson is to enable search within MongoDB Atlas by creating a s
 1. Click the **Create Index** button.
 1. Choose the **Visual Editor** and click **Next**.
 1. You can name your index or leave it set to `default`.
+    - If you alter the name, take note of the new name for later.
 1. Choose the `social_butterfly` database and `flutters` collection, then press **Next**.
 1. Press **Create Search Index**.
 
