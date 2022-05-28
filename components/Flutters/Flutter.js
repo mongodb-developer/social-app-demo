@@ -20,6 +20,7 @@ const tweetUrl = "https://twitter.com/intent/tweet?url=https%3A%2F%2Fsocialbutte
 const useStyles = createStyles((theme) => ({
   flutter: {
     padding: `${theme.spacing.lg}px ${theme.spacing.xl}px`,
+    marginBottom: theme.spacing.sm,
   },
 
   body: {

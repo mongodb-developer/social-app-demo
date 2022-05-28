@@ -217,6 +217,8 @@ npm run dev
 
 You can now navigate to `http://localhost:3000` and test deleting an existing flutter.
 
+> Notice that you can delete any flutter, including ones that you did not create.
+
 <details>
 <summary>Show solution</summary>
 
