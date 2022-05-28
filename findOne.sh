@@ -7,7 +7,7 @@ appid="<Data API App ID>"
 apikey="<Data API Key>"
 
 # 3. Base URL
-baseurl="https://data.mongodb-api.com/app/$appid/endpoint/data/beta"
+baseurl="https://data.mongodb-api.com/app/$appid/endpoint/data/v1"
 
 # 4. Endpoint
 endpoint="/action/findOne"

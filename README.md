@@ -30,7 +30,7 @@ The endpoints available from the Atlas Data API are:
 
 Each endpoint must use the `POST` method.
 
-The base URL for each endpoint is: `https://data.mongodb-api.com/app/<Data API App ID>/endpoint/data/beta`.
+The base URL for each endpoint is: `https://data.mongodb-api.com/app/<Data API App ID>/endpoint/data/v1`.
 
 > Note your Data API App ID separately from your URL Endpoint.
 
@@ -48,6 +48,7 @@ Each request must include, at minimum, the following in body:
 
 - Open the [findOne.sh](./findOne.sh) file and add your connection variables in items 1 and 2.
 - If your cluster name is not `Cluster0`, change the `dataSource` variable, item #5, to your cluster name.
+- Save the file.
 
 ## Task 2: Test the `findOne` endpoint
 
