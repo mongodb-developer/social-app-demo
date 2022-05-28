@@ -11,8 +11,8 @@ The goal of this lesson is to get an overview of how the Atlas Functions and HTT
 ## Task 1: Open the Atlas Data API App
 
 You can get to the Atlas Data API App in two ways:
-1. From the Atlas dashboard, select **Database** from the left menu, then select the **Linked Atlas App**.
-1. From the Atlas dashboard, select the **Atlas App Services** tab, then select the **Data API App**.
+1. From the Atlas dashboard, select **Database** from the left menu, then select the **Linked App Services** `data` app.
+1. From the Atlas dashboard, select the **App Services** tab, then select the `data` **Data API App**.
 
 From this page, you can see the HTTPS Endpoints, and other settings for the Data API App.
 
@@ -20,24 +20,9 @@ From this page, you can see the HTTPS Endpoints, and other settings for the Data
 
 Select **HTTPS Endpoints** from the left menu.
 
-Here you will see the list of pre-generated HTTPS Endpoints from the Data API. Choose the `find` endpoint. 
+On the **Data API** tab you will see additional settings that can be configured for the Data API. 
 
-Since we'll be customizing user authentication in the following lesson, we'll need to set the **Create User Upon Authentication** option to `On`.
-
-## TEMP TASK: Create a custom endpoint
-
-> The above 2 tasks do not currently work in product. This task will allow us to complete the remaining lessons.
-
-1. Select **HTTPS Endpoints** from the left menu.
-1. Click **Add An Endpoint**.
-1. Route: `/createUser`
-1. Method: `POST`
-1. Respond With Result: On
-1. Add a new function:
-    - Function Name: `createUser`
-    - Leave default function.
-1. Create User Upon Authentication: On
-1. Save.
+Since we'll be customizing user authentication in the following lesson, we'll need to set the **Create User Upon Authentication** option to `On`, and then click **Save**.
 
 ---
 
