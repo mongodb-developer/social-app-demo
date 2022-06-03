@@ -13,24 +13,6 @@ export default withApiAuthRequired(async function handler(req, res) {
 
     switch (req.method) {
       case "GET":
-        // TEMPORARY SOLUTION FOR DRY RUN - REPLACE DATA API ID WITH YOURS
-        await fetch(
-          `https://data.mongodb-api.com/app/${process.env.AUTH0_AUDIENCE}/endpoint/createUser`,
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              "Access-Control-Request-Headers": "*",
-              jwtTokenString: accessToken,
-            },
-            body: JSON.stringify({
-              dataSource: process.env.MONGODB_DATA_SOURCE,
-              database: "social_butterfly",
-              collection: "flutters",
-            }),
-          }
-        );
-        // END TEMP SOLUTION
         await new Promise((resolve) => setTimeout(resolve, 2000));
         const readData = await fetch(`${baseUrl}/findOne`, {
           method: "POST",

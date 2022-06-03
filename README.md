@@ -32,9 +32,7 @@ From the Auth0 dashboard, select **APIs** under **Applications** from the left m
 ## Task 2: Set up Atlas authentication settings
 
 From the Atlas dashboard:
-1. Select **Database** from the left menu. 
-1. Select the **Linked Realm App** named `data`.
-1. From **Authentication**, edit **Custom JWT Authentication**.
+1. In your App Services app, navigate to the **Authentication** tab, and then edit **Custom JWT Authentication**.
 1. Enable Provider.
 1. Set **Verification Method** to: Use a JWK URI
 1. Set **JWK URI**: `https://<auth0 domain>/.well-known/jwks.json`
@@ -68,31 +66,34 @@ From the Atlas dashboard:
 
 ## Task 4: Set rules for the `flutters` collection
 
-From the Atlas Data API Realm App:
+From the Atlas Data API App:
 1. Select **Rules** from the left menu.
 1. Select the `flutters` collection.
-1. Choose the template: Users can read all data, but only write their own data.
-1. Set the **Field Name For User ID** to `user`.
-1. Click **Configure Collection**.
-1. Click the edit button (✏) on the **owner** role.
-1. Change `user` to `user.id`.
-
+1. Click **Skip (start from scratch)**.
+1. Type `owner` for the *Role Name*.
+1. Apply When should be:
     ```
     { "user.id": "%%user.id" }
     ```
-1. Click **Done Editing**.
+1. For *Document Permissions*, select all.
+1. For *Field Permissions*, select **Read and write all fields**.
 1. Click **Save** in the top right.
+1. Add another role by clicking the **Add Role** button.
+1. Choose the **readAll** preset role and click the **Add preset role** button.
 
 ## Task 5: Set rules for the `user` collection
 
-From the Atlas Data API Realm App:
-1. Select **Rules** from the left menu.
-1. Select the **plus** button next to the cluster.
-1. Choose the `social_butterfly` database.
-1. Choose **Create New Option** for the collection, enter `users`, and click **Create**.
-1. Choose the template: Users can only read and write their own data.
-1. Set the **Field Name For User ID** to `id`.
-1. Click **Add Collection**.
+From the Atlas Data API App:
+1. Select the `users` collection.
+1. Click **Skip (start from scratch)**.
+1. Type `owner` for the *Role Name*.
+1. Apply When should be:
+    ```
+    { "id": "%%user.id" }
+    ```
+1. For *Document Permissions*, select all.
+1. For *Field Permissions*, select **Read and write all fields**.
+1. Click **Save** in the top right.
 
 ## Task 6: Add environment variables
 
