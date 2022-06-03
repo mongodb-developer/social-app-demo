@@ -65,7 +65,9 @@ const baseUrl = `${process.env.MONGODB_DATA_API_URL}/action`;
 
 ## Task 4: Create the `find` endpoint
 
-Within the `GET` case of the `switch` statement, you should use `fetch` to make a request to the `find` Data API endpoint using the `baseUrl`, `fetchOptions`, and `fetchBody` variables. You will need to `stringify` the body of the request.
+Within the `GET` case of the `switch` statement, you should use `fetch` to make a request to the `find` Data API endpoint using the `baseUrl`, `fetchOptions`, and `fetchBody` variables. 
+
+Add to the body object a `sort` field which should contain an object that sorts descending on the `postedAt` field. You will need to `stringify` the body of the request.
 
 > Hint: Since this is an `async` function, you can use the `await` keyword.
 
