@@ -48,7 +48,7 @@ case "PUT":
 1. Switch to the **Advanced View**.
 1. Click the **Convert to Advanced View** button.
 1. Type "convert" then click the **Convert** button.
-1. Edit the `non-owner` rule to allow writes to the `likes` field.
+1. Edit the `readAll` rule to allow writes to the `likes` field and change the name to `non-owner`.
     ```js
     {
       "name": "non-owner",
