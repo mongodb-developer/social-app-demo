@@ -45,11 +45,7 @@ case "PUT":
 
 1. From your Data API App Services app, navigate to the **Rules** tab.
 1. Select the `flutters` collection.
-1. On the **non-owner** role, check then uncheck the `Write` checkbox. (Yes, there's a small bug here 😅)
-1. Click the **+ Add Field** button.
-1. Type `likes` and click the **Check** button.
-1. Select the **Write** checkbox for the `likes` field only.
-1. Click the **Save** button.
+1. More instructions tbd...
 
 ## Task 3: Test 
 
