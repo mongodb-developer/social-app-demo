@@ -45,7 +45,24 @@ case "PUT":
 
 1. From your Data API App Services app, navigate to the **Rules** tab.
 1. Select the `flutters` collection.
-1. More instructions tbd...
+1. Switch to the **Advanced View**.
+1. Click the **Convert to Advanced View** button.
+1. Type "convert" then click the **Convert** button.
+1. Edit the `non-owner` rule to allow writes to the `likes` field.
+    ```js
+    {
+      "name": "non-owner",
+      "apply_when": {},
+      "read": true,
+      "fields": {
+        "likes": { "write": true }
+      },
+      "insert": false,
+      "delete": false,
+      "search": true
+    }
+    ```
+1. Click the **Save** button in the top right.
 
 ## Task 3: Test 
 
