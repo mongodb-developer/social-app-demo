@@ -12,13 +12,14 @@ export default withApiAuthRequired(async function handler(req, res) {
   };
   const fetchBody = {
     dataSource: process.env.MONGODB_DATA_SOURCE,
-    database: "social_butterfly",
+    database: "eco-club",
     collection: "flutters",
   };
   const baseUrl = `${process.env.MONGODB_DATA_API_URL}/action`;
 
   try {
     switch (req.method) {
+      // Add Update Functionality Here
       case "PUT":
         const updateData = await fetch(`${baseUrl}/updateOne`, {
           ...fetchOptions,

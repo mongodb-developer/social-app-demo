@@ -4,7 +4,7 @@
 
 ---
 
-## Goal
+## Goal 
 
 The goal of this lesson is to enable search within MongoDB Atlas by creating a search index. We should be able to search for flutters by taking advantage of fuzzy searching.
 

@@ -12,7 +12,7 @@ export default withApiAuthRequired(async function handler(req, res) {
   };
   const fetchBody = {
     dataSource: process.env.MONGODB_DATA_SOURCE,
-    database: "social_butterfly",
+    database: "eco-club",
     collection: "flutters",
   };
   const baseUrl = `${process.env.MONGODB_DATA_API_URL}/action`;
@@ -49,8 +49,8 @@ export default withApiAuthRequired(async function handler(req, res) {
             ...fetchBody,
             filter: { _id: { $oid: req.body._id } },
             update: {
-              $set: {
-                body: req.body.body,
+              [req.body.action]: {
+                likes: req.body.userId,
               },
             },
           }),
