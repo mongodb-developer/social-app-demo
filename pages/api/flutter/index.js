@@ -69,6 +69,7 @@ export default withApiAuthRequired(async function handler(req, res) {
         const deleteDataJson = await deleteData.json();
         res.status(200).json(deleteDataJson);
         break;
+
       default:
         res.status(405).end();
         break;
