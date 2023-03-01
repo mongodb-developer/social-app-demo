@@ -44,4 +44,4 @@ Great job! Your application is now deployed and you can open it from the **Overv
 
 ## Bonus: Team Collaboration
 
-Team up with someone and browse to each other's deployed applications. Leave some flutters to let them know it's working. B
+Team up with someone and browse to each other's deployed applications. Leave some flutters to let them know it's working.
