@@ -8,7 +8,7 @@
 
 The goal of this lesson is to deploy our completed project to Vercel.
 
-> Be sure to switch to the `10-lesson` branch in your local environment.
+> Be sure to switch to the `10-lesson` branch in your local environment. 
 
 ## Task 1: Create a Vercel Account
 
