@@ -25,7 +25,7 @@ If you don't already have a [Vercel account](https://vercel.com/signup), create 
     - This initail deploy will not really do anything since the `main` branch does not contain our final code.
 1. Go back to the main dashboard and select your new project.
     - Take note of your custom domain. (Example: `https://socialbutterfly.vercel.app`)
-1. From the **Settings** tab, click **Git**.
+1. From the **Settings** tab, click **Git**. 
 1. Change the **Production Branch** to `10-lesson` and save.
 1. Navigate to the **Environment Variables** tab.
 1. Change `AUTH0_BASE_URL` to your custom Vercel domain noted earlier. 
