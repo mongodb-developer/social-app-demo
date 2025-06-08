@@ -11,14 +11,14 @@ This workshop will show you how you can connect to MongoDB Atlas in your Jamstac
 ## What we'll cover in this workshop
 
 - ~15 minutes of slides explaining Jamstack, serverless, and how the MongoDB Atlas Data API fits into these.
-- Hands-on lesson resulting in you building a fully functional, deployed application. 
+- Hands-on lesson resulting in you building a fully functional, deployed application.
 
 ## Prerequisites
 
 In order to successfully complete the tasks in this workshop, you should have:
 
 - Familiarity with JavaScript
-- Accounts (All Free): 
+- Accounts (All Free):
   - [MongoDB Atlas](https://www.mongodb.com/cloud/atlas/register2)
   - [GitHub](https://github.com/signup)
   - [Vercel](https://vercel.com/signup)
